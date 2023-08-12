@@ -1,0 +1,36 @@
+@import-normalize; /* bring in normalize.css styles */
+
+:root {  
+    --text-color: rgba(22, 24, 35, 1);
+    --font-family:'Inter', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+   font-family: var(--font-family);
+    font-size: 1.6rem;
+    text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
