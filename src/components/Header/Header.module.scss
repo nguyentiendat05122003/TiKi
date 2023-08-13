@@ -1,0 +1,30 @@
+.main-header {
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 8px 0px;
+    z-index: 999;
+}
+.container-header {
+    width: 1280px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.middle-header {
+    display: flex;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    -webkit-box-align: center;
+    align-items: center;
+    letter-spacing: normal;
+}
+.bottom-header {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    z-index: 1;
+    letter-spacing: normal;
+}
