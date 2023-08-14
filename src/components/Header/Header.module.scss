@@ -13,7 +13,7 @@
 }
 .middle-header {
     display: flex;
-    height: auto;
+    height: 40px;
     position: relative;
     z-index: 2;
     -webkit-box-align: center;
@@ -27,4 +27,75 @@
     justify-content: space-between;
     z-index: 1;
     letter-spacing: normal;
+}
+.middle-left {
+    display: flex;
+    flex: 1 1 0%;
+    -webkit-box-align: center;
+    align-items: center;
+} 
+.logo-menu {
+    margin-right: 48px;
+    flex-basis: unset;
+} 
+.tiki-logo {
+    width: 100%;
+    height: 100%;
+    .logo{
+        margin-top: 4px;
+        width: 57px;
+        height: 40px;
+    }
+}
+.cart-wrapper{
+    position: relative;
+    display: block;
+}
+.cart-container{
+    margin-left: 24px;
+    position: relative;
+    padding: 0px !important;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(0, 96, 255, 0.12);
+    }
+    &::before{
+        content: "";
+        top:20%;
+        display: block;
+        height: 20px;
+        position: absolute;
+        left: -12px;
+        border: 1px solid rgb(235, 235, 240)
+    }
+}
+.cart-content{
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.cart-img{
+    width: 24px;
+    height: 24px;
+}
+.cart-quantity{
+    color: rgb(255, 255, 255);
+    background: rgb(255, 66, 79);
+    height: 16px;
+    right: 0px;
+    top: -4px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 150%;
+    position: absolute;
+    padding: 0.5px 4px;
 }

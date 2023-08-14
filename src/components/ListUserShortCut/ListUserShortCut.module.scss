@@ -1,0 +1,50 @@
+.header_user_shortcut {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    margin-left: 48px;
+}
+.user-item {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 8px 16px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    line-height: 21px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    &.active{
+        font-weight: 500;
+        font-size: 1.4rem;
+        color: rgb(10, 104, 255);
+        &:hover.user-item{
+            background-color: rgba(0, 96, 255, 0.12);
+        }
+    }
+    &:hover{
+        background-color: rgba(39, 39, 42, 0.12);
+    }
+}
+.item-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    border-radius: 50%;
+}
+.text{
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+.btn{
+    color: var(--text-color);
+    outline: none;
+    background-color:transparent;
+}

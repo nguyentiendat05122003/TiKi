@@ -1,35 +1,44 @@
-const images = {
-    logo: require('~/assets/image/logo.png'),
-    iconTitle: require('~/assets/image/iconTitle.png'),
-    noImage: require('~/assets/image/no-image.jpg'),
-    search: require('~/assets/image/search.png'),
-    home: require('~/assets/image/home.png'),
-    homeActive: require('~/assets/image/home-active.png'),
-    icon: require('~/assets/image/icon.png'),
-    king: require('~/assets/image/king.png'),
-    kingActive: require('~/assets/image/king-active.png'),
-    cart: require('~/assets/image/cart.png'),
-    location: require('~/assets/image/location.png'),
-    sprite: require('~/assets/image/sprite@2x.png'),
-    search2: require('~/assets/image/search-2.png'),
-    trend: require('~/assets/image/trend.png'),
-    freeShip: require('~/assets/image/freeShip.png'),
-    right: require('~/assets/image/right.png'),
-    close: require('~/assets/image/close.png'),
-    login: require('~/assets/image/login.png'),
-    facebook: require('~/assets/image/facebook.png'),
-    google: require('~/assets/image/google.png'),
-    banner: require('~/assets/image/banner.png'),
-    prev: require('~/assets/image//prev.png'),
-    slider1: require('~/assets/image/slider1.webp'),
-    slider2: require('~/assets/image/slider2.webp'),
-    slider3: require('~/assets/image/slider3.webp'),
-    slider4: require('~/assets/image/slider4.webp'),
-    slider5: require('~/assets/image/slider5.webp'),
-    slider6: require('~/assets/image/slider6.webp'),
-    slider7: require('~/assets/image/slider7.webp'),
-    slider8: require('~/assets/image/slider8.webp'),
-    slider9: require('~/assets/image/slider9.webp'),
-    arrowActive: require('~/assets/image/arrow-active.png'),
+import logo from '~/assets/image/logo.png';
+import noImage from '~/assets/image/no-image.jpg';
+import searchIcon from '~/assets/image/search.png';
+import home from '~/assets/image/home.png';
+import homeActive from '~/assets/image/home-active.png';
+import iconFace from '~/assets/image/icon.png';
+import king from '~/assets/image/king.png';
+import kingActive from '~/assets/image/king-active.png';
+import cart from '~/assets/image/cart.png';
+export const images = {
+    logo,
+    noImage,
+    searchIcon,
+    home,
+    homeActive,
+    iconFace,
+    king,
+    kingActive,
+    //     iconTitle: require('~/assets/image/iconTitle.png'),
+    cart,
+    //     location: require('~/assets/image/location.png'),
+    //     sprite: require('~/assets/image/sprite@2x.png'),
+    //     search2: require('~/assets/image/search-2.png'),
+    //     trend: require('~/assets/image/trend.png'),
+    //     freeShip: require('~/assets/image/freeShip.png'),
+    //     right: require('~/assets/image/right.png'),
+    //     close: require('~/assets/image/close.png'),
+    //     login: require('~/assets/image/login.png'),
+    //     facebook: require('~/assets/image/facebook.png'),
+    //     google: require('~/assets/image/google.png'),
+    //     banner: require('~/assets/image/banner.png'),
+    //     prev: require('~/assets/image//prev.png'),
+    //     slider1: require('~/assets/image/slider1.webp'),
+    //     slider2: require('~/assets/image/slider2.webp'),
+    //     slider3: require('~/assets/image/slider3.webp'),
+    //     slider4: require('~/assets/image/slider4.webp'),
+    //     slider5: require('~/assets/image/slider5.webp'),
+    //     slider6: require('~/assets/image/slider6.webp'),
+    //     slider7: require('~/assets/image/slider7.webp'),
+    //     slider8: require('~/assets/image/slider8.webp'),
+    //     slider9: require('~/assets/image/slider9.webp'),
+    //     arrowActive: require('~/assets/image/arrow-active.png'),
 };
-export default images;
+// imagePaths.ts

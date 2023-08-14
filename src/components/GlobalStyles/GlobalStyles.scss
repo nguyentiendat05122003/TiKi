@@ -1,9 +1,10 @@
 @import-normalize; /* bring in normalize.css styles */
 
 :root {  
-    --text-color: rgba(22, 24, 35, 1);
+    --text-color: rgb(128, 128, 137);
     --font-family:'Inter', sans-serif;
     --white-color:#fff;
+    --black-color:#000,
 }
 
 html {
