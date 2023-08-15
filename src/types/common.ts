@@ -11,4 +11,5 @@ export interface MenuShortCutType {
     iconDefault: string;
     status: boolean;
     to?: string;
+    isHover: boolean;
 }

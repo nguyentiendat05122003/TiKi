@@ -1,0 +1,46 @@
+.wrapper {
+    background-color: #FFE880;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 4px;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: rgb(235, 235, 240);
+}
+.link {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: initial;
+}
+.img {
+    object-fit: contain;
+    width: 81px;
+    aspect-ratio: auto 81 / 12;
+    height: 12px;
+}
+.text {
+    color: #27272A;
+    font-size: 1.4rem;
+    line-height: 150%;
+    padding-left: 4px;
+    strong{
+        font-weight: 500;
+    }
+}
+.icon {
+    margin-left: 4px;
+    object-fit: contain;
+    width: 7px;
+    aspect-ratio: auto 7 / 11;
+    height: 11px;
+}

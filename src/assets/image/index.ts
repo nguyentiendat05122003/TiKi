@@ -7,6 +7,9 @@ import iconFace from '~/assets/image/icon.png';
 import king from '~/assets/image/king.png';
 import kingActive from '~/assets/image/king-active.png';
 import cart from '~/assets/image/cart.png';
+import location from '~/assets/image/location.png';
+import freeShip from '~/assets/image/freeShip.png';
+import arrowRight from '~/assets/image/right.png';
 export const images = {
     logo,
     noImage,
@@ -18,12 +21,12 @@ export const images = {
     kingActive,
     //     iconTitle: require('~/assets/image/iconTitle.png'),
     cart,
-    //     location: require('~/assets/image/location.png'),
+    location,
     //     sprite: require('~/assets/image/sprite@2x.png'),
     //     search2: require('~/assets/image/search-2.png'),
     //     trend: require('~/assets/image/trend.png'),
-    //     freeShip: require('~/assets/image/freeShip.png'),
-    //     right: require('~/assets/image/right.png'),
+    freeShip,
+    arrowRight,
     //     close: require('~/assets/image/close.png'),
     //     login: require('~/assets/image/login.png'),
     //     facebook: require('~/assets/image/facebook.png'),

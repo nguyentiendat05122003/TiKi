@@ -18,6 +18,7 @@ export const LIST_MENU_SHORT_USER = [
         iconDefault: home,
         status: true,
         to: '/',
+        isHover: false,
     },
     {
         id: 1,
@@ -26,6 +27,7 @@ export const LIST_MENU_SHORT_USER = [
         iconDefault: king,
         status: false,
         to: '/astra-rewards/home',
+        isHover: false,
     },
     {
         id: 2,
@@ -33,5 +35,16 @@ export const LIST_MENU_SHORT_USER = [
         iconActive: iconFace,
         iconDefault: iconFace,
         status: false,
+        isHover: true,
     },
+];
+export const HEADER_LINKS = [
+    { id: 0, title: 'trái cây', path: '/' },
+    { id: 1, title: 'thịt, trứng', path: '/' },
+    { id: 2, title: 'rau củ quả', path: '/' },
+    { id: 3, title: 'sữa, bơ, phô mai', path: '/' },
+    { id: 4, title: 'hải sản', path: '/' },
+    { id: 5, title: 'gạo, mì ăn liền', path: '/' },
+    { id: 6, title: 'đồ uống, bia rượu', path: '/' },
+    { id: 7, title: 'bánh kẹo', path: '/' },
 ];

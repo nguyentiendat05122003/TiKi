@@ -3,6 +3,8 @@ import style from './ListUserShortCut.module.scss';
 import classNames from 'classnames/bind';
 import Image from '../Image';
 import Button from '../Button';
+import TippyAccount from '../TippyAccount';
+import { Fragment } from 'react';
 export interface ListMenuUserShortCutProps {
     listData: MenuShortCutType[];
     onClick: (id: number) => void;
@@ -18,18 +20,35 @@ export default function ListMenuUserShortCut({ onClick, listData }: ListMenuUser
     return (
         <div className={cx('header_user_shortcut')}>
             {listData.map((item) => {
+                let Layout;
+                if (item.isHover) {
+                    Layout = TippyAccount;
+                } else {
+                    Layout = Fragment;
+                }
                 return (
-                    <Button
-                        onClick={() => {
-                            handleClick(item.id);
-                        }}
-                        key={item.id}
-                        to={item.to}
-                        className={cx('user-item', { btn: !item.to }, { active: item.status })}
-                    >
-                        <Image src={item.status ? item.iconActive : item.iconDefault} className={cx('item-image')} />
-                        <span className="text">{item.title}</span>
-                    </Button>
+                    <Layout key={item.id}>
+                        <div>
+                            <Button
+                                onClick={() => {
+                                    handleClick(item.id);
+                                }}
+                                to={item.to}
+                                className={cx(
+                                    { ['user-item']: item.to },
+                                    { btn: !item.to },
+                                    { active: item.status },
+                                    { notLink: !item.to },
+                                )}
+                            >
+                                <Image
+                                    src={item.status ? item.iconActive : item.iconDefault}
+                                    className={cx('item-image')}
+                                />
+                                <span className="text">{item.title}</span>
+                            </Button>
+                        </div>
+                    </Layout>
                 );
             })}
         </div>

@@ -12,6 +12,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tippyjs/react": "^4.2.6",
     "classnames": "^2.3.2",
     "path": "^0.12.7",
     "react": "^18.2.0",

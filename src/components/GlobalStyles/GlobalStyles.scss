@@ -36,3 +36,22 @@ a[href] {
     text-decoration: none;
 }
 
+.wrapper-btn-account:hover{
+    background-color:rgba(39, 39, 42, 0.12)!important;
+    border-radius: 8px;
+}
+.notLink{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 8px 16px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    line-height: 21px;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
