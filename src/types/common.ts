@@ -13,3 +13,27 @@ export interface MenuShortCutType {
     to?: string;
     isHover: boolean;
 }
+
+export interface SuggestSearchType {
+    id: number;
+    to: string;
+    name: string;
+    thumbnail?: string;
+}
+
+export interface ParamSearchType {
+    name: string;
+}
+export interface ProductType {
+    id: number;
+    description: string;
+    name: string;
+    shortDescription: string;
+    originalPrice: number;
+    salePrice: number;
+    isPromotion: number;
+    promotionPercent: number;
+    isFreeShip: boolean;
+    thumbnail: string;
+    [key: string]: any;
+}

@@ -10,6 +10,8 @@ import cart from '~/assets/image/cart.png';
 import location from '~/assets/image/location.png';
 import freeShip from '~/assets/image/freeShip.png';
 import arrowRight from '~/assets/image/right.png';
+import search2 from '~/assets/image/search-2.png';
+import trend from '~/assets/image/trend.png';
 export const images = {
     logo,
     noImage,
@@ -19,12 +21,11 @@ export const images = {
     iconFace,
     king,
     kingActive,
-    //     iconTitle: require('~/assets/image/iconTitle.png'),
     cart,
     location,
     //     sprite: require('~/assets/image/sprite@2x.png'),
-    //     search2: require('~/assets/image/search-2.png'),
-    //     trend: require('~/assets/image/trend.png'),
+    search2,
+    trend,
     freeShip,
     arrowRight,
     //     close: require('~/assets/image/close.png'),
