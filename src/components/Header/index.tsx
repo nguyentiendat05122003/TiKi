@@ -13,19 +13,21 @@ import style from './Header.module.scss';
 import useDebounce from '~/hooks/useDebounce';
 import { ProductType } from '~/types';
 import productApi from '~/features/products/api';
+import Location from '~/features/Location';
+import { FormatLocation } from '~/utils/formatLocation';
 export default function Header() {
     const cx = classNames.bind(style);
     const [isShowHistory, setIsShowHistory] = useState(false);
+    const [isShowLocation, setIsShowLocation] = useState(false);
     const [searchResults, setSearchResults] = useState<ProductType[]>([]);
     const searchRef = useRef<HTMLDivElement>(null);
     const historyRef = useRef<HTMLDivElement>(null);
+    const locationRef = useRef<HTMLDivElement>(null);
     const dispatch = useAppDispatch();
     const listMenuShortCut = useAppSelector((state) => state.menu.listData);
     const [searchValue, setSearchValue] = useState('');
     const debounce = useDebounce(searchValue, 500);
-    const handleClick = (id: number) => {
-        dispatch(setStatus(id));
-    };
+    const location = useAppSelector((state) => state.location.value);
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
             if (e.target) {
@@ -38,10 +40,18 @@ export default function Header() {
                     if (!element?.closest(`.${classNameHistory}`)) {
                         setIsShowHistory(false);
                     }
+                } else if (locationRef.current) {
+                    const classNameLocation = locationRef.current?.className || '';
+                    if (!element?.closest(`.${classNameLocation}`) && !element.matches(`.${cx('location-wrapper')}`)) {
+                        setIsShowLocation(false);
+                    }
                 }
             }
         };
         document.addEventListener('click', handleClick);
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
     }, []);
     const handleChange = (value: string) => {
         setSearchValue(value);
@@ -61,6 +71,13 @@ export default function Header() {
             console.log(error);
         }
     }, [debounce]);
+    const handleClick = (id: number) => {
+        dispatch(setStatus(id));
+    };
+    const handleShowLocation = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsShowLocation(!isShowLocation);
+    };
     return (
         <header className={cx('main-header')}>
             <div className={cx('container-header')}>
@@ -96,17 +113,25 @@ export default function Header() {
                                     );
                                 })}
                             </div>
-                            <div className={cx('location-wrapper')}>
+                            <div onClick={handleShowLocation} className={cx('location-wrapper')}>
                                 <div className={cx('location-container')}>
                                     <Image src={images.location} className={cx('header-icon-location')} />
                                     <h4 className={cx('title')}>Giao đến:</h4>
-                                    <div className={cx('address')}>H. Văn Lâm, X. Tân Quang, Hưng Yên</div>
+                                    <div className={cx('address')}>{FormatLocation(location)}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {isShowLocation && (
+                <Location
+                    onClick={() => {
+                        setIsShowLocation(false);
+                    }}
+                    ref={locationRef}
+                />
+            )}
         </header>
     );
 }
