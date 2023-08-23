@@ -8,20 +8,27 @@ import { Fragment } from 'react';
 export interface ListMenuUserShortCutProps {
     listData: MenuShortCutType[];
     onClick: (id: number) => void;
+    onClickAuth: () => void;
 }
 
-export default function ListMenuUserShortCut({ onClick, listData }: ListMenuUserShortCutProps) {
+export default function ListMenuUserShortCut({ onClick, listData, onClickAuth }: ListMenuUserShortCutProps) {
+    const user = false;
     const cx = classNames.bind(style);
     const handleClick = (id: number) => {
-        if (id === 2) return;
-        if (!onClick) return;
-        onClick(id);
+        if (id === 2 && user) return;
+        if (id === 2 && !user) {
+            onClick(0);
+            onClickAuth();
+        } else {
+            if (!onClick) return;
+            onClick(id);
+        }
     };
     return (
         <div className={cx('header_user_shortcut')}>
             {listData.map((item) => {
                 let Layout;
-                if (item.isHover) {
+                if (item.isHover && user) {
                     Layout = TippyAccount;
                 } else {
                     Layout = Fragment;
@@ -35,7 +42,8 @@ export default function ListMenuUserShortCut({ onClick, listData }: ListMenuUser
                                 }}
                                 to={item.to}
                                 className={cx(
-                                    { ['user-item']: item.to },
+                                    'user-item',
+                                    //{ ['user-item']: item.to},
                                     { btn: !item.to },
                                     { active: item.status },
                                     { notLink: !item.to },

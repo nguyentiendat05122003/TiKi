@@ -12,6 +12,10 @@ import freeShip from '~/assets/image/freeShip.png';
 import arrowRight from '~/assets/image/right.png';
 import search2 from '~/assets/image/search-2.png';
 import trend from '~/assets/image/trend.png';
+import close from '~/assets/image/close.png';
+import login from '~/assets/image/login.png';
+import facebook from '~/assets/image/facebook.png';
+import google from '~/assets/image/google.png';
 export const images = {
     logo,
     noImage,
@@ -28,10 +32,10 @@ export const images = {
     trend,
     freeShip,
     arrowRight,
-    //     close: require('~/assets/image/close.png'),
-    //     login: require('~/assets/image/login.png'),
-    //     facebook: require('~/assets/image/facebook.png'),
-    //     google: require('~/assets/image/google.png'),
+    close,
+    login,
+    facebook,
+    google,
     //     banner: require('~/assets/image/banner.png'),
     //     prev: require('~/assets/image//prev.png'),
     //     slider1: require('~/assets/image/slider1.webp'),

@@ -19,9 +19,20 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
     const cx = classNames.bind(style);
     const location = useAppSelector((state) => state.location.value);
     const [isShowLocationForm, setIsShowLocationForm] = useState(false);
-    const [provinceValue, setProvinceValue] = useState('');
-    const [districtValue, setDistrictValue] = useState('');
-    const [wardValue, setWardValue] = useState('');
+    const [provinceValue, setProvinceValue] = useState<ProvinceType>({
+        name: '',
+        code: 0,
+        districts: [],
+    });
+    const [districtValue, setDistrictValue] = useState<DistrictType>({
+        name: '',
+        code: 0,
+        wards: [],
+    });
+    const [wardValue, setWardValue] = useState<WardType>({
+        name: '',
+        code: 0,
+    });
     const inputProvinceRef = useRef<HTMLInputElement>(null);
     const inputDistrictRef = useRef<HTMLInputElement>(null);
     const inputWardRef = useRef<HTMLInputElement>(null);
@@ -76,7 +87,7 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
             };
             const res = await cityApi.getDistricts(params);
             setDistrictList(res.districts);
-            setProvinceValue(element.textContent || '');
+            setProvinceValue(res);
             inputProvinceRef.current?.blur();
         };
         fetch();
@@ -91,7 +102,7 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
                 },
             };
             const res = await cityApi.getWards(params);
-            setDistrictValue(element.textContent || '');
+            setDistrictValue(res);
             setWardList(res.wards);
             inputDistrictRef.current?.blur();
         };
@@ -99,19 +110,95 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
     };
     const handleClickWardItem = (e: MouseEvent<HTMLElement>) => {
         const element = e.target as HTMLDivElement;
-        setWardValue(element.textContent || '');
+        const fetch = async () => {
+            const code = element.tabIndex;
+            const res = await cityApi.getWard(code);
+            console.log(res);
+            setWardValue(res);
+            inputWardRef.current?.blur();
+        };
+        fetch();
     };
+    useEffect(() => {
+        if (!provinceValue?.name?.trim()) {
+            const fetch = async () => {
+                const res = await cityApi.getAllProvince();
+                setProvinceList(res);
+            };
+            fetch();
+            return;
+        }
+        const fetch = async () => {
+            const res = await cityApi.searchProvince({ q: provinceValue.name });
+            setProvinceList(res);
+        };
+        fetch();
+    }, [provinceValue]);
+    useEffect(() => {
+        if (!districtValue?.name.trim() && provinceValue.name) {
+            const fetch = async () => {
+                const params = {
+                    code: provinceValue.code,
+                    params: {
+                        depth: 2,
+                    },
+                };
+                const res = await cityApi.getDistricts(params);
+                setDistrictList(res.districts);
+                inputProvinceRef.current?.blur();
+            };
+            fetch();
+            return;
+        }
+        const fetch = async () => {
+            const res = await cityApi.searchDistrict({ q: districtValue.name, p: provinceValue?.code });
+            setDistrictList(res);
+        };
+        fetch();
+    }, [districtValue]);
+    useEffect(() => {
+        if (!wardValue?.name.trim() && districtValue.name) {
+            const fetch = async () => {
+                const params = {
+                    code: districtValue.code,
+                    params: {
+                        depth: 2,
+                    },
+                };
+                const res = await cityApi.getWards(params);
+                setWardList(res.wards);
+            };
+            fetch();
+            return;
+        } else {
+            const fetch = async () => {
+                const res = await cityApi.searchWard({
+                    q: wardValue.name,
+                    p: provinceValue?.code,
+                    d: districtValue?.code,
+                });
+                setWardList(res);
+            };
+            fetch();
+        }
+    }, [wardValue, districtValue, provinceValue]);
     const handleChangeProvince = (e: ChangeEvent) => {
         const element = e.target as HTMLInputElement;
-        setProvinceValue(element.value);
+        setProvinceValue((prev) => {
+            return { ...prev, name: element.value };
+        });
     };
     const handleChangeDistrict = (e: ChangeEvent) => {
         const element = e.target as HTMLInputElement;
-        setDistrictValue(element.value);
+        setDistrictValue((prev) => {
+            return { ...prev, name: element.value };
+        });
     };
     const handleChangeWard = (e: ChangeEvent) => {
         const element = e.target as HTMLInputElement;
-        setWardValue(element.value);
+        setWardValue((prev) => {
+            return { ...prev, name: element.value };
+        });
     };
     const handleClick = () => {
         if (!onClick) return;
@@ -177,7 +264,7 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
                                                     handleClickInput(inputProvinceRef, arrowRef);
                                                 }}
                                                 onChange={handleChangeProvince}
-                                                value={provinceValue}
+                                                value={provinceValue?.name}
                                                 ref={inputProvinceRef}
                                                 placeholder="Vui lòng chọn tỉnh/thành phố"
                                                 className={cx('input')}
@@ -219,10 +306,10 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
                                                     handleClickInput(inputDistrictRef, arrowDistrictRef);
                                                 }}
                                                 onChange={handleChangeDistrict}
-                                                value={districtValue}
+                                                value={districtValue?.name}
                                                 ref={inputDistrictRef}
                                                 placeholder="Vui lòng chọn quận/huyện"
-                                                className={cx('input', { ['disable']: !provinceValue })}
+                                                className={cx('input', { ['disable']: !provinceValue.name })}
                                             />
                                             <div className={cx('icon-wrapper')}>
                                                 <span className={cx('separator')}></span>
@@ -261,10 +348,10 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
                                                     handleClickInput(inputWardRef, arrowWardRef);
                                                 }}
                                                 onChange={handleChangeWard}
-                                                value={wardValue}
+                                                value={wardValue?.name}
                                                 ref={inputWardRef}
-                                                placeholder="Vui lòng chọn quận/huyện"
-                                                className={cx('input', { ['disable']: !districtValue })}
+                                                placeholder="Vui lòng chọn phường/xã"
+                                                className={cx('input', { ['disable']: !districtValue.name })}
                                             />
                                             <div className={cx('icon-wrapper')}>
                                                 <span className={cx('separator')}></span>
@@ -299,7 +386,11 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
                         <div className={cx('location-footer')}>
                             <Button
                                 onClick={() => {
-                                    handleSubmit({ province: provinceValue, district: districtValue, ward: wardValue });
+                                    handleSubmit({
+                                        province: provinceValue?.name || '',
+                                        district: districtValue?.name,
+                                        ward: wardValue?.name,
+                                    });
                                 }}
                                 className={cx('btn-submit')}
                             >

@@ -5,7 +5,7 @@ export function FormatLocation(location: LocationType) {
     let districtString = location.district;
     let wardString = location.ward;
     if (provinceString.startsWith('Tỉnh')) {
-        provinceString = 'T. ' + provinceString.substring(5);
+        provinceString = provinceString.substring(5);
     } else if (provinceString.startsWith('Thành phố ')) {
         provinceString = 'TP. ' + provinceString.substring(9);
     }

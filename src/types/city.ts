@@ -9,6 +9,7 @@ export interface ProvinceType {
     code: number;
     districts: DistrictType[];
 }
+
 export interface DistrictType {
     name: string;
     code: number;

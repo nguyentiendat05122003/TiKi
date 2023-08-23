@@ -1,0 +1,214 @@
+.overlay {
+    position: fixed;
+    inset: 0px;
+    background: rgba(0, 0, 0, 0.53);
+    z-index: 1000;
+    overflow-y: scroll;
+    animation: anmOpacity 0.2s linear;
+
+}
+.wrapper {
+    position: relative;
+    inset: 0px;
+    border: none;
+    background: rgb(255, 255, 255);
+    overflow: unset;
+    border-radius: 20px;
+    outline: none;
+    padding: 0px;
+    width: 800px;
+    margin: 20px auto;
+    animation: transTop 0.2s linear;
+
+}
+.container {
+    background: rgb(248, 248, 248);
+    display: flex;
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+}
+.btn-close {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 42px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.main-left {
+    width: 500px;
+    padding: 40px 45px 24px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px 0px 0px 20px;
+}
+.main-right {
+    background: linear-gradient(136deg, rgb(240, 248, 255) -1%, rgb(219, 238, 255) 85%);
+    width: 300px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 20px 20px 0px
+
+}
+.content {
+    margin: 30px 0px 0px;
+    text-align: center;
+}
+.image-close{
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 42px;
+    height: 42px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.image-login{
+    max-width: 100%;
+    width: 203px;
+    height: 203px;
+}
+.title{
+    margin: 0px 0px 5px;
+    color: rgb(11, 116, 229);
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+.desc{
+    font-size: 1.3rem;
+    color: rgb(11, 116, 229);
+    font-weight: 500;
+}
+
+.heading {
+    margin-bottom: 20px;
+    h4{
+        margin: 0px 0px 10px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    p{
+        margin: 0px;
+        font-size: 15px;
+    }
+}
+.login-social {
+    text-align: center;
+    margin: 60px 0px 0px;
+}
+.social-heading {
+    margin: 0px 0px 15px;
+    position: relative;
+    &::before{
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: rgb(242, 242, 242);
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    span{
+        font-size: 15px;
+        color: rgb(120, 120, 120);
+        display: inline-block;
+        background: rgb(255, 255, 255);
+        padding: 0px 20px;
+        position: relative;
+        z-index: 2;
+    }
+}
+.social-items {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px 0px 10px;
+    list-style: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.social-item {
+    margin: 0px 10px;
+}
+.social-image{
+    width: 58px;
+    height: 58px;
+}
+.note {
+    font-size: 1.2rem;
+    color: rgb(120, 120, 120);
+    line-height: 16px;
+    text-align: start;
+}
+.link-security{
+    display: inline-block;
+    text-decoration: underline;
+    margin-left: 0px;
+    font-size: 11px;
+    color: rgb(120, 120, 120);
+}
+.wrapper-btn{
+    display: flex;
+    align-items: center;
+    gap:0 10px;
+}
+.btn-submit{
+    margin: 30px 0px 10px;
+    outline: none;
+    border-radius: 4px;
+    background: rgb(255, 66, 78);
+    padding: 13px 0px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.btn-signUp{
+    margin: 30px 0px 10px;
+    outline: none;
+    border-radius: 4px;
+    background: rgb(255, 66, 78);
+    padding: 13px 0px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.redirect{
+    margin-top: 10px;
+    text-align: right;
+}
+.link{
+    text-decoration: underline;
+    cursor: pointer;
+}
+@keyframes anmOpacity {
+    0%    { opacity: 0; }
+    100%  { opacity: 1; }}
+@keyframes transTop {
+    from{
+        transform: translateY(50%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}

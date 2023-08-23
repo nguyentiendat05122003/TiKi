@@ -15,8 +15,10 @@ import { ProductType } from '~/types';
 import productApi from '~/features/products/api';
 import Location from '~/features/Location';
 import { FormatLocation } from '~/utils/formatLocation';
+import Auth from '~/features/authentication';
 export default function Header() {
     const cx = classNames.bind(style);
+    const [isShowAuth, setIsShowAuth] = useState(false);
     const [isShowHistory, setIsShowHistory] = useState(false);
     const [isShowLocation, setIsShowLocation] = useState(false);
     const [searchResults, setSearchResults] = useState<ProductType[]>([]);
@@ -93,7 +95,13 @@ export default function Header() {
                                 <Search onChange={handleChange} value={searchValue} ref={searchRef} />
                                 {isShowHistory && <HistorySearch data={searchResults} ref={historyRef} />}
                             </div>
-                            <ListMenuUserShortCut onClick={handleClick} listData={listMenuShortCut} />
+                            <ListMenuUserShortCut
+                                onClickAuth={() => {
+                                    setIsShowAuth(true);
+                                }}
+                                onClick={handleClick}
+                                listData={listMenuShortCut}
+                            />
                             <div className={cx('cart-wrapper')}>
                                 <div className={cx('cart-container')}>
                                     <div className={cx('cart-content')}>
@@ -130,6 +138,13 @@ export default function Header() {
                         setIsShowLocation(false);
                     }}
                     ref={locationRef}
+                />
+            )}
+            {isShowAuth && (
+                <Auth
+                    onClick={() => {
+                        setIsShowAuth(false);
+                    }}
                 />
             )}
         </header>
