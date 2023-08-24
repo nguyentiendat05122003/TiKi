@@ -1,30 +1,37 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box } from '@mui/material';
-// import { unwrapResult } from '@reduxjs/toolkit';
+import { unwrapResult } from '@reduxjs/toolkit';
 import classNames from 'classnames/bind';
-// import { useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import style from '~/features/authentication/authentication.module.scss';
 import { FormValuesRegister } from '~/types/auth';
 import InputField from '~/components/FormControl/inputFiled';
+import { useAppDispatch } from '~/hooks';
+import { fetchRegisterUser } from '~/slices/userSlice';
+interface RegisterFormProps {
+    onClick: () => void;
+}
 const schema = yup
     .object({
         username: yup.string().required(),
         email: yup.string().required(),
         password: yup.string().required(),
-        confirmPassword: yup.string().required(),
+        confirmPassword: yup
+            .string()
+            .required('Please retype your password.')
+            .oneOf([yup.ref('password')], 'Your passwords do not match.'),
     })
     .required();
-export default function RegisterForm() {
+export default function RegisterForm({ onClick }: RegisterFormProps) {
     const cx = classNames.bind(style);
-    // const dispatch = useDispatch();
-    // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const dispatch = useAppDispatch();
+    const { enqueueSnackbar } = useSnackbar();
     const {
         control,
         handleSubmit,
         formState: { errors },
-        reset,
     } = useForm<FormValuesRegister>({
         defaultValues: {
             username: '',
@@ -38,26 +45,24 @@ export default function RegisterForm() {
         e?.preventDefault();
         try {
             data = { ...data, username: data.email };
-            console.log(data);
-            // const resultAction = await dispatch(fetchPostUser(data));
-            // const originalPromiseResult = unwrapResult(resultAction);
-            // if (originalPromiseResult) {
-            //     enqueueSnackbar('Đăng ký thành công', {
-            //         autoHideDuration: 3000,
-            //         variant: 'success',
-            //         anchorOrigin: { vertical: 'top', horizontal: 'right' },
-            //     });
-            //     reset();
-            //     if (!onClick) return;
-            //     onClick();
-            // }
+            const resultAction = await dispatch(fetchRegisterUser(data));
+            const originalPromiseResult = unwrapResult(resultAction);
+            if (originalPromiseResult) {
+                enqueueSnackbar('Đăng ký thành công', {
+                    autoHideDuration: 2000,
+                    variant: 'success',
+                    anchorOrigin: { vertical: 'top', horizontal: 'right' },
+                });
+                if (!onClick) return;
+                onClick();
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
-            // enqueueSnackbar(error, {
-            //     autoHideDuration: 3000,
-            //     variant: 'error',
-            //     anchorOrigin: { vertical: 'top', horizontal: 'right' },
-            // });
+            enqueueSnackbar(error, {
+                autoHideDuration: 2000,
+                variant: 'error',
+                anchorOrigin: { vertical: 'top', horizontal: 'right' },
+            });
         }
     };
     return (

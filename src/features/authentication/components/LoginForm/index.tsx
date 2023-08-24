@@ -1,24 +1,28 @@
-import { Box } from '@mui/material';
-import React from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import classNames from 'classnames/bind';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Box } from '@mui/material';
+import { unwrapResult } from '@reduxjs/toolkit';
+import classNames from 'classnames/bind';
+import { useSnackbar } from 'notistack';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import InputField from '~/components/FormControl/inputFiled';
-import { FormValuesLogin } from '~/types/auth';
 import style from '~/features/authentication/authentication.module.scss';
-// import { fetchLoginUser } from '~/reducers/userReducer';
-// import { unwrapResult } from '@reduxjs/toolkit';
-// import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '~/hooks';
+import { fetchLoginUser } from '~/slices/userSlice';
+import { FormValuesLogin } from '~/types/auth';
 const schema = yup
     .object({
         email: yup.string().required(),
         password: yup.string().required(),
     })
     .required();
-export default function LoginForm() {
+interface LoginFormProps {
+    onClickCloseLogin: () => void;
+}
+export default function LoginForm({ onClickCloseLogin }: LoginFormProps) {
     const cx = classNames.bind(style);
-    //const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
+    const { enqueueSnackbar } = useSnackbar();
     const {
         control,
         handleSubmit,
@@ -32,20 +36,28 @@ export default function LoginForm() {
     });
     const onSubmit: SubmitHandler<FormValuesLogin> = async (data, e) => {
         e?.preventDefault();
-        console.log(data);
         try {
-            // const payload = {
-            //     identifier: data.email,
-            //     password: data.password,
-            // };
-            // const resultAction = await dispatch(fetchLoginUser(payload));
-            // const originalPromiseResult = unwrapResult(resultAction);
-            // if (originalPromiseResult) {
-            //     if (!onClick) return;
-            //     onClick();
-            // }
+            const payload = {
+                identifier: data.email,
+                password: data.password,
+            };
+            const resultAction = await dispatch(fetchLoginUser(payload));
+            const originalPromiseResult = unwrapResult(resultAction);
+            if (originalPromiseResult) {
+                enqueueSnackbar('Đăng ký thành công', {
+                    autoHideDuration: 2000,
+                    variant: 'success',
+                    anchorOrigin: { vertical: 'top', horizontal: 'right' },
+                });
+                if (!onClickCloseLogin) return;
+                onClickCloseLogin();
+            }
         } catch (error) {
-            console.log(error);
+            enqueueSnackbar(error, {
+                autoHideDuration: 2000,
+                variant: 'error',
+                anchorOrigin: { vertical: 'top', horizontal: 'right' },
+            });
         }
     };
     return (

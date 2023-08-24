@@ -28,19 +28,29 @@ axiosClient.interceptors.response.use(
     function (error) {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
+        const { config, response } = error;
+        if (config.url === 'auth/local/register') {
+            if (config.url === 'auth/local/register' && config.method === 'post') {
+                const message = response.data.message[0].messages[0].message;
+                throw new Error(message);
+            } else {
+                return Promise.reject(error);
+            }
+        }
+        if (config.url === 'auth/local') {
+            if (config.url === 'auth/local' && config.method === 'post') {
+                const message = response.data.message[0].messages[0].message;
+                throw new Error(message);
+            } else {
+                return Promise.reject(error);
+            }
+        }
         return Promise.reject(error);
     },
 );
 
-axiosClientCity.interceptors.response.use(
-    function (response) {
-        // Any status code that lie within the range of 2xx cause this function to trigger
-        // Do something with response data
-        return response.data;
-    },
-    function (error) {
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
-        return Promise.reject(error);
-    },
-);
+axiosClientCity.interceptors.response.use(function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response.data;
+});

@@ -41,7 +41,15 @@ export default function Auth({ onClick }: AuthProps) {
                                 <h4>Xin chào,</h4>
                                 <p>Đăng nhập hoặc Tạo tài khoản</p>
                             </div>
-                            {login ? <LoginForm /> : <RegisterForm />}
+                            {login ? (
+                                <LoginForm onClickCloseLogin={onClick} />
+                            ) : (
+                                <RegisterForm
+                                    onClick={() => {
+                                        setLogin(true);
+                                    }}
+                                />
+                            )}
                             <div className={cx('wrapper-btn')}></div>
                             <div className={cx('redirect')}>
                                 {login ? (
