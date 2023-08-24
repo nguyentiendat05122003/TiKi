@@ -52,7 +52,8 @@ export default function LoginForm({ onClickCloseLogin }: LoginFormProps) {
                 if (!onClickCloseLogin) return;
                 onClickCloseLogin();
             }
-        } catch (error) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             enqueueSnackbar(error, {
                 autoHideDuration: 2000,
                 variant: 'error',
