@@ -3,7 +3,7 @@ import userApi from '~/features/authentication/api/userApi';
 import { FormValuesRegister, ParamsLogin, ResponseValue } from '~/types/auth';
 
 interface UserState {
-    currentUser: ResponseValue;
+    currentUser: ResponseValue | null;
 }
 
 const initialState = { currentUser: {} } as UserState;
@@ -37,7 +37,13 @@ export const fetchLoginUser = createAsyncThunk(
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.currentUser = null;
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user');
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchLoginUser.fulfilled, (state, action) => {
             state.currentUser = action.payload;
@@ -45,4 +51,5 @@ const userSlice = createSlice({
     },
 });
 const userReducer = userSlice.reducer;
+export const { logout } = userSlice.actions;
 export default userReducer;

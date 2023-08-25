@@ -205,9 +205,8 @@ const Location = forwardRef<HTMLDivElement, LocationProps>(({ onClick }, ref) =>
         onClick();
     };
     const handleChangeOption = (e: ChangeEvent, value: string) => {
-        if (value === 'dynamic') {
+        if (value === 'dynamic' && e) {
             setIsShowLocationForm(true);
-            console.log(e);
         } else if (value === 'current') {
             setIsShowLocationForm(false);
         }

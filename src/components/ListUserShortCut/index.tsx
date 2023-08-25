@@ -1,10 +1,11 @@
-import { MenuShortCutType } from '~/types';
-import style from './ListUserShortCut.module.scss';
 import classNames from 'classnames/bind';
-import Image from '../Image';
-import Button from '../Button';
-import TippyAccount from '../TippyAccount';
 import { Fragment } from 'react';
+import { statusLoginSelector, useAppSelector } from '~/hooks';
+import { MenuShortCutType } from '~/types';
+import Button from '../Button';
+import Image from '../Image';
+import TippyAccount from '../TippyAccount';
+import style from './ListUserShortCut.module.scss';
 export interface ListMenuUserShortCutProps {
     listData: MenuShortCutType[];
     onClick: (id: number) => void;
@@ -12,11 +13,12 @@ export interface ListMenuUserShortCutProps {
 }
 
 export default function ListMenuUserShortCut({ onClick, listData, onClickAuth }: ListMenuUserShortCutProps) {
-    const user = false;
+    const state = useAppSelector((state) => state);
+    const userLogin = statusLoginSelector(state);
     const cx = classNames.bind(style);
     const handleClick = (id: number) => {
-        if (id === 2 && user) return;
-        if (id === 2 && !user) {
+        if (id === 2 && userLogin) return;
+        if (id === 2 && !userLogin) {
             onClick(0);
             onClickAuth();
         } else {
@@ -28,7 +30,7 @@ export default function ListMenuUserShortCut({ onClick, listData, onClickAuth }:
         <div className={cx('header_user_shortcut')}>
             {listData.map((item) => {
                 let Layout;
-                if (item.isHover && user) {
+                if (item.isHover && userLogin) {
                     Layout = TippyAccount;
                 } else {
                     Layout = Fragment;
