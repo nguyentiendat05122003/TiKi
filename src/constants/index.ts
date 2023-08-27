@@ -18,6 +18,13 @@ import category5 from '~/assets/image/category5.jpg';
 import category6 from '~/assets/image/category6.png';
 import category7 from '~/assets/image/category7.jpg';
 import category8 from '~/assets/image/category8.png';
+import homeActiveMobile from '~/assets/image/home-active-mobile.png';
+import homeMobile from '~/assets/image/home-mobile.png';
+import menuMobile from '~/assets/image/menu-mobile.png';
+import menuActiveMobile from '~/assets/image/menu-active-mobile.png';
+import fireMobile from '~/assets/image/fire-mobile.png';
+import chatMobile from '~/assets/image/chat-mobile.png';
+import accountMobile from '~/assets/image/account-mobile.png';
 import { SuggestSearchType } from '~/types';
 
 export const HEADER_SEARCH = [
@@ -96,4 +103,47 @@ export const Categories: SuggestSearchType[] = [
     { id: 5, to: '/', thumbnail: category6, name: 'Balo và Vali' },
     { id: 6, to: '/', thumbnail: category7, name: 'Đũa, muỗng, nĩa' },
     { id: 7, to: '/', thumbnail: category8, name: 'Điện Thoại - Máy Tính Bảng' },
+];
+
+export const ListItemBottomNavigator = [
+    {
+        id: 0,
+        title: 'Trang chủ',
+        iconActive: homeActiveMobile,
+        iconDefault: homeMobile,
+        status: true,
+        to: '/',
+    },
+    {
+        id: 1,
+        title: 'Danh Mục',
+        iconActive: menuActiveMobile,
+        iconDefault: menuMobile,
+        status: false,
+        to: '/',
+    },
+    {
+        id: 2,
+        title: 'Lướt',
+        iconActive: fireMobile,
+        iconDefault: fireMobile,
+        status: false,
+        to: '/',
+    },
+    {
+        id: 3,
+        title: 'Chat',
+        iconActive: chatMobile,
+        iconDefault: chatMobile,
+        status: false,
+        to: '/',
+    },
+    {
+        id: 4,
+        title: 'Cá Nhân',
+        iconActive: accountMobile,
+        iconDefault: accountMobile,
+        status: false,
+        to: '/',
+    },
 ];

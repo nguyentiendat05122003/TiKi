@@ -40,7 +40,7 @@ const Search = forwardRef<HTMLDivElement, SearchProps>(({ value, onChange }, ref
                     type="text"
                     className={cx('input-search')}
                 />
-                <button className={cx('btn-search')}>Tìm kiếm</button>
+                <button className={cx('btn-search', 'hide-on-mobile')}>Tìm kiếm</button>
             </div>
         </div>
     );

@@ -58,3 +58,18 @@
         background-color: rgba(10, 104, 255, 0.2);
     }
 }
+@media screen and (max-width : 739px) {
+    .hide-on-mobile{
+        display: none;
+    }
+    .input-search{
+        height: 38px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding:  4px;
+        padding-right: 12px;
+    }
+    .icon-search{
+        margin: 0px 0px 0px 12px;
+    }
+}

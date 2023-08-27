@@ -6,7 +6,7 @@ import { images } from '~/assets/image';
 export default function FreeShip() {
     const cx = classNames.bind(style);
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { 'hide-on-mobile': true })}>
             <Link className={cx('link')} to="/">
                 <Image className={cx('img')} src={images.freeShip} />
                 <div className={cx('text')}>

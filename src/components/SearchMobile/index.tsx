@@ -1,25 +1,23 @@
 import classNames from 'classnames/bind';
-import { forwardRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Image from '../Image';
-import style from './HistorySearch.module.scss';
+import style from './SearchMobile.module.scss';
+import { ArrowLeft, CartSvg, SearchSvg } from '../Svg';
 import { images } from '~/assets/image';
 import { Arrow } from '../Svg';
-import { Categories, SEARCH_SUGGEST, TrendingSearch } from '~/constants';
+import { useState, useEffect } from 'react';
+import Image from '../Image';
 import { ProductType, SuggestSearchType } from '~/types';
-import { useAppSelector } from '~/hooks';
-export interface HistorySearchProps {
-    data: ProductType[];
-}
+import { Categories, SEARCH_SUGGEST, TrendingSearch } from '~/constants';
+import { Link } from 'react-router-dom';
+import BottomNavigator from '../BottomNavigator';
+export interface HistorySearchMobileProps {}
 
-const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, ref) => {
+export default function SearchMobile() {
     const cx = classNames.bind(style);
     const [isShowMore, setIsShowMore] = useState(true);
     const [numberItemShow, setNumberItemShow] = useState(3);
     const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>([]);
     const [trendSuggestList, setTrendSuggestList] = useState<SuggestSearchType[]>([]);
     const [categoryList, setCategoryList] = useState<SuggestSearchType[]>([]);
-    const isMobile = useAppSelector((state) => state.agent.value);
     const handleShowMore = () => {
         setIsShowMore(false);
         setNumberItemShow(SEARCH_SUGGEST.length);
@@ -34,15 +32,36 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
         setTrendSuggestList(TrendingSearch);
         setCategoryList(Categories);
     }, []);
-    useEffect(() => {
-        if (data.length > 0) {
-            setSearchSuggestList(data);
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data.length > 0) {
+    //         setSearchSuggestList(data);
+    //     }
+    // }, [data]);
+    // const handleClick = () => {
+    //     onClick();
+    // };
     return (
-        <>
-            {!isMobile && <div className={cx('overlay')}></div>}
-            <div ref={ref} className={cx('history-container')}>
+        <div className={cx('wrapper')}>
+            <div className={cx('header-search')}>
+                <button className={cx('btn-back')}>
+                    <ArrowLeft className="" />
+                </button>
+                <button className={cx('btn-menu')}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div className={cx('search-wrapper')}>
+                    <SearchSvg />
+                    <input placeholder="Bạn đang tìm kiếm" type="text" className={cx('input')} />
+                </div>
+                <div className={cx('cart-wrapper')}>
+                    <Link className={cx('cart-link')} to="/">
+                        <CartSvg />
+                    </Link>
+                </div>
+            </div>
+            <div className={cx('history-container')}>
                 <div className={cx('suggest-list')}>
                     {searchSuggestList.slice(0, numberItemShow).map((item) => {
                         return (
@@ -105,7 +124,7 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
                     </div>
                 </div>
             </div>
-        </>
+            <BottomNavigator />
+        </div>
     );
-});
-export default HistorySearch;
+}

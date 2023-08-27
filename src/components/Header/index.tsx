@@ -3,19 +3,20 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { images } from '~/assets/image';
 import { HEADER_LINKS } from '~/constants';
+import Location from '~/features/Location';
+import Auth from '~/features/authentication';
+import productApi from '~/features/products/api';
 import { useAppDispatch, useAppSelector } from '~/hooks';
+import useDebounce from '~/hooks/useDebounce';
 import { setStatus } from '~/slices/MenuSlice';
+import { ProductType } from '~/types';
+import { FormatLocation } from '~/utils/formatLocation';
 import HistorySearch from '../HistorySearch';
 import Image from '../Image';
 import ListMenuUserShortCut from '../ListUserShortCut';
 import Search from '../Search';
+import SearchMobile from '../SearchMobile';
 import style from './Header.module.scss';
-import useDebounce from '~/hooks/useDebounce';
-import { ProductType } from '~/types';
-import productApi from '~/features/products/api';
-import Location from '~/features/Location';
-import { FormatLocation } from '~/utils/formatLocation';
-import Auth from '~/features/authentication';
 export default function Header() {
     const cx = classNames.bind(style);
     const [isShowAuth, setIsShowAuth] = useState(false);
@@ -30,6 +31,7 @@ export default function Header() {
     const [searchValue, setSearchValue] = useState('');
     const debounce = useDebounce(searchValue, 500);
     const location = useAppSelector((state) => state.location.value);
+    const isMobile = useAppSelector((state) => state.agent.value);
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
             if (e.target) {
@@ -85,17 +87,29 @@ export default function Header() {
             <div className={cx('container-header')}>
                 <div className={cx('container-wrapper')}>
                     <div className={cx('logo-menu')}>
-                        <Link to="/" className={cx('tiki-logo')}>
+                        <Link to="/" className={cx('tiki-logo', 'hide-on-mobile')}>
                             <Image src={images.logo} className={cx('logo')} alt="tiki-logo" />
                         </Link>
                     </div>
                     <div className={cx('content')}>
                         <div className={cx('middle-header')}>
                             <div className={cx('middle-left')}>
-                                <Search onChange={handleChange} value={searchValue} ref={searchRef} />
-                                {isShowHistory && <HistorySearch data={searchResults} ref={historyRef} />}
+                                {isMobile ? (
+                                    <>
+                                        {!isShowHistory && (
+                                            <Search onChange={handleChange} value={searchValue} ref={searchRef} />
+                                        )}
+                                        {isShowHistory && <SearchMobile />}
+                                    </>
+                                ) : (
+                                    <>
+                                        <Search onChange={handleChange} value={searchValue} ref={searchRef} />
+                                        {isShowHistory && <HistorySearch data={searchResults} ref={historyRef} />}
+                                    </>
+                                )}
                             </div>
                             <ListMenuUserShortCut
+                                classes={cx('hide-on-mobile-and-tablet')}
                                 onClickAuth={() => {
                                     setIsShowAuth(true);
                                 }}
@@ -111,7 +125,7 @@ export default function Header() {
                                 </div>
                             </div>
                         </div>
-                        <div className={cx('bottom-header')}>
+                        <div className={cx('bottom-header', 'hide-on-mobile-and-tablet')}>
                             <div className={cx('header-quickLinks')}>
                                 {HEADER_LINKS.map((item) => {
                                     return (
@@ -121,7 +135,10 @@ export default function Header() {
                                     );
                                 })}
                             </div>
-                            <div onClick={handleShowLocation} className={cx('location-wrapper')}>
+                            <div
+                                onClick={handleShowLocation}
+                                className={cx('location-wrapper', 'hide-on-mobile-and-tablet')}
+                            >
                                 <div className={cx('location-container')}>
                                     <Image src={images.location} className={cx('header-icon-location')} />
                                     <h4 className={cx('title')}>Giao đến:</h4>

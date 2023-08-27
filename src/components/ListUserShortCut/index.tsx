@@ -10,9 +10,10 @@ export interface ListMenuUserShortCutProps {
     listData: MenuShortCutType[];
     onClick: (id: number) => void;
     onClickAuth: () => void;
+    classes: string;
 }
 
-export default function ListMenuUserShortCut({ onClick, listData, onClickAuth }: ListMenuUserShortCutProps) {
+export default function ListMenuUserShortCut({ classes, onClick, listData, onClickAuth }: ListMenuUserShortCutProps) {
     const state = useAppSelector((state) => state);
     const userLogin = statusLoginSelector(state);
     const cx = classNames.bind(style);
@@ -27,7 +28,7 @@ export default function ListMenuUserShortCut({ onClick, listData, onClickAuth }:
         }
     };
     return (
-        <div className={cx('header_user_shortcut')}>
+        <div className={cx('header_user_shortcut', classes)}>
             {listData.map((item) => {
                 let Layout;
                 if (item.isHover && userLogin) {
