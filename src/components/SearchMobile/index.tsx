@@ -1,19 +1,23 @@
 import classNames from 'classnames/bind';
-import style from './SearchMobile.module.scss';
-import { ArrowLeft, CartSvg, SearchSvg } from '../Svg';
-import { images } from '~/assets/image';
-import { Arrow } from '../Svg';
-import { useState, useEffect } from 'react';
-import Image from '../Image';
-import { ProductType, SuggestSearchType } from '~/types';
-import { Categories, SEARCH_SUGGEST, TrendingSearch } from '~/constants';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { images } from '~/assets/image';
+import { Categories, SEARCH_SUGGEST, TrendingSearch } from '~/constants';
+import { ProductType, SuggestSearchType } from '~/types';
 import BottomNavigator from '../BottomNavigator';
-export interface HistorySearchMobileProps {}
+import HeaderAccountMobile from '../HeaderAccountMobile';
+import Image from '../Image';
+import { Arrow, ArrowLeft, CartSvg, SearchSvg } from '../Svg';
+import style from './SearchMobile.module.scss';
+export interface SearchMobileProps {
+    onClick: () => void;
+}
 
-export default function SearchMobile() {
+export default function SearchMobile({ onClick }: SearchMobileProps) {
     const cx = classNames.bind(style);
     const [isShowMore, setIsShowMore] = useState(true);
+    const accountContainerRef = useRef<HTMLDivElement>(null);
+    const [isShowAccountMobile, setIsShowAccountMobile] = useState(false);
     const [numberItemShow, setNumberItemShow] = useState(3);
     const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>([]);
     const [trendSuggestList, setTrendSuggestList] = useState<SuggestSearchType[]>([]);
@@ -32,6 +36,10 @@ export default function SearchMobile() {
         setTrendSuggestList(TrendingSearch);
         setCategoryList(Categories);
     }, []);
+    const handleClickCloseSearch = () => {
+        if (!onClick) return;
+        onClick();
+    };
     // useEffect(() => {
     //     if (data.length > 0) {
     //         setSearchSuggestList(data);
@@ -40,13 +48,33 @@ export default function SearchMobile() {
     // const handleClick = () => {
     //     onClick();
     // };
+    const handleClickShowAccountMobile = () => {
+        setIsShowAccountMobile(true);
+    };
+    useEffect(() => {
+        const handleClick = (e: MouseEvent) => {
+            const element = e.target as HTMLElement;
+            if (accountContainerRef.current) {
+                if (
+                    !element?.closest(`.${accountContainerRef.current.className}`) &&
+                    !element.matches(`.${cx('btn-menu')}`)
+                ) {
+                    setIsShowAccountMobile(false);
+                }
+            }
+        };
+        document.addEventListener('click', handleClick);
+        return () => {
+            document.removeEventListener('click', handleClick);
+        };
+    }, []);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('header-search')}>
-                <button className={cx('btn-back')}>
+                <button onClick={handleClickCloseSearch} className={cx('btn-back')}>
                     <ArrowLeft className="" />
                 </button>
-                <button className={cx('btn-menu')}>
+                <button onClick={handleClickShowAccountMobile} className={cx('btn-menu')}>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -125,6 +153,7 @@ export default function SearchMobile() {
                 </div>
             </div>
             <BottomNavigator />
+            {isShowAccountMobile && <HeaderAccountMobile ref={accountContainerRef} />}
         </div>
     );
 }

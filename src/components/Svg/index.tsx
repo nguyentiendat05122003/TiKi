@@ -96,3 +96,102 @@ export const SearchSvg = () => {
         </svg>
     );
 };
+
+export const AvatarDefault = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            className={className}
+            height="40"
+            width="40"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+        </svg>
+    );
+};
+
+export const ArrowRight = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+            className={className}
+        >
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+        </svg>
+    );
+};
+export const HomeIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="25"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ marginRight: '32px' }}
+        >
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+        </svg>
+    );
+};
+export const ListIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="25"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ marginRight: '32px' }}
+        >
+            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"></path>
+        </svg>
+    );
+};
+export const AccountIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="25"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ marginRight: '32px' }}
+        >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+        </svg>
+    );
+};
+
+export const BellIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="25"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ marginRight: '32px' }}
+        >
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+        </svg>
+    );
+};

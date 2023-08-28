@@ -99,7 +99,13 @@ export default function Header() {
                                         {!isShowHistory && (
                                             <Search onChange={handleChange} value={searchValue} ref={searchRef} />
                                         )}
-                                        {isShowHistory && <SearchMobile />}
+                                        {isShowHistory && (
+                                            <SearchMobile
+                                                onClick={() => {
+                                                    setIsShowHistory(false);
+                                                }}
+                                            />
+                                        )}
                                     </>
                                 ) : (
                                     <>

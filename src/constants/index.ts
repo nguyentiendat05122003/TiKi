@@ -26,6 +26,7 @@ import fireMobile from '~/assets/image/fire-mobile.png';
 import chatMobile from '~/assets/image/chat-mobile.png';
 import accountMobile from '~/assets/image/account-mobile.png';
 import { SuggestSearchType } from '~/types';
+import { AccountIcon, BellIcon, HomeIcon, ListIcon } from '~/components/Svg';
 
 export const HEADER_SEARCH = [
     'Bạn tìm gì hôm nay',
@@ -144,6 +145,33 @@ export const ListItemBottomNavigator = [
         iconActive: accountMobile,
         iconDefault: accountMobile,
         status: false,
+        to: '/',
+    },
+];
+
+export const NavbarItemMobile = [
+    {
+        id: 0,
+        title: 'Trang chủ',
+        icon: HomeIcon,
+        to: '/',
+    },
+    {
+        id: 1,
+        title: 'Danh sách ngành hàng',
+        icon: ListIcon,
+        to: '/',
+    },
+    {
+        id: 2,
+        title: 'Quản lý tài khoản',
+        icon: AccountIcon,
+        to: '/',
+    },
+    {
+        id: 3,
+        title: 'Thông báo',
+        icon: BellIcon,
         to: '/',
     },
 ];

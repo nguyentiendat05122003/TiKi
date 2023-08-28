@@ -19,6 +19,7 @@
 }
 .btn-back {
     min-width: 40px;
+    min-height: 40px;
     height: 40px;
     padding: 0px;
     border: 0px;
@@ -37,7 +38,7 @@
     padding: 0px;
     border: 0px;
     background: 0px center;
-    margin: 0px 8px 0px 0px;
+    padding: 0px 8px 0px 0px;
     outline: 0px;
     display: flex;
     -webkit-box-pack: center;

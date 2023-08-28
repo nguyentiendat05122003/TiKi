@@ -1,0 +1,118 @@
+.wrapper{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    visibility: visible;
+}
+.container{
+    position: relative;
+    z-index: 2;
+    width: 288px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    animation:transCross linear .2s ;
+}
+@keyframes transCross {
+    from{
+        transform: translateX(-50%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+.header{
+    background-color: rgb(27, 168, 255);
+}
+.content{
+    padding-bottom: 50px;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+.nav-list{
+    list-style: none;
+    padding: 0px;
+    margin: 12px 0px;   
+}
+.nav-link{
+    max-height: 49px;
+    padding: 12px 16px;
+    font-size: 1.4rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+.sub-head{
+    color: rgb(120, 120, 120);
+    padding: 12px 16px 0px;
+    border-top: 1px solid rgb(242, 242, 242);
+}
+.strongly{
+    margin: 0px 4px;
+    color: rgb(38, 188, 78);
+    font-weight: 500;
+}
+
+.link-header{
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: start;
+    text-decoration: none;
+    .avatar-img{
+        margin: 0px 16px 0px 0px;
+        color: #fff;
+    }
+    .content{
+        font-size: 1.3rem;
+        color: #fff;
+        line-height: 20px;
+        flex: 1 1 0%;
+        max-height: 40px;
+        overflow: hidden;
+    }
+    .name{
+        font-size: 1.3rem;
+    }
+    .email{
+        font-size: 1.1rem;
+        margin: 4px 0px 0px;
+    }
+    .icon-right{
+        color: #fff;
+        margin-top: 10px;
+    }
+}
+.hotline-text{
+    padding: 12px 16px;
+    display: flex;
+    font-size: 1.4rem;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(51, 51, 51);
+    text-decoration: none;
+}
+.support-customer{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.overlay{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
