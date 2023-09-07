@@ -1,0 +1,32 @@
+.wrapper{
+
+}
+.heading{
+    font-size: 1.9rem;
+    line-height: 21px;
+    font-weight: 300;
+    margin: 20px 0px 15px;
+}
+.link{
+    background-color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    height: 60px;
+    border: 1px dashed rgb(216, 216, 216);
+    margin: 0px 0px 10px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    span{
+        font-size: 1.5rem;
+    }
+}
+.icon{
+    color: rgb(120, 120, 120);
+    font-size: 2.8rem;
+    margin: 0px 20px;
+}
+.inner{
+
+}

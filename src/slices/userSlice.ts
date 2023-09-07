@@ -6,7 +6,12 @@ interface UserState {
     currentUser: ResponseValue | null;
 }
 
-const initialState = { currentUser: {} } as UserState;
+const initialState = {
+    currentUser: {
+        user: JSON.parse(localStorage.getItem('user') || 'null'),
+        jwt: JSON.parse(localStorage.getItem('access_token') || 'null'),
+    },
+} as UserState;
 export const fetchRegisterUser = createAsyncThunk(
     'users/fetchRegisterUser',
     async (data: FormValuesRegister, { rejectWithValue }) => {
@@ -42,6 +47,8 @@ const userSlice = createSlice({
             state.currentUser = null;
             localStorage.removeItem('access_token');
             localStorage.removeItem('user');
+            localStorage.removeItem('info-user');
+            localStorage.removeItem('avatar');
         },
     },
     extraReducers: (builder) => {

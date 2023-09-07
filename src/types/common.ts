@@ -37,3 +37,7 @@ export interface ProductType {
     thumbnail: string;
     [key: string]: any;
 }
+export interface Country {
+    country: string;
+    [key: string]: string;
+}

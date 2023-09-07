@@ -14,7 +14,7 @@ export function Arrow({ className }: PropsArrow) {
             className={className}
         >
             <path
-                fill="rgb(13,92,182)"
+                fill="currentColor"
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M0.646447 0.646447C0.841709 0.451184 1.15829 0.451184 1.35355 0.646447L6.35355 5.64645C6.54882 5.84171 6.54882 6.15829 6.35355 6.35355L1.35355 11.3536C1.15829 11.5488 0.841709 11.5488 0.646447 11.3536C0.451184 11.1583 0.451184 10.8417 0.646447 10.6464L5.29289 6L0.646447 1.35355C0.451184 1.15829 0.451184 0.841709 0.646447 0.646447Z"
@@ -45,7 +45,7 @@ export const ArrowLeft = forwardRef<SVGSVGElement, PropsArrow>(({ className = ''
             ref={ref}
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="30"
             width="30"
@@ -72,7 +72,7 @@ export const CartSvg = () => {
                     d="M6.5 18c.828 0 1.5.672 1.5 1.5S7.328 21 6.5 21 5 20.328 5 19.5 5.672 18 6.5 18zm12 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zM3.857.2c.401 0 .74.297.793.694l.542 4.068H21c.505 0 .883.462.784.957l-1.904 9.524c-.075.374-.403.643-.785.643H5.762c-.401 0-.74-.297-.793-.695L3.157 1.8H1C.558 1.8.2 1.442.2 1 .2.558.558.2 1 .2zm16.167 6.362H5.406l1.056 7.924H18.44l1.585-7.924z"
                 />
             </defs>
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none" fillRule="evenodd">
                 <g transform="translate(1 1)">
                     <use fill="#fff" xlinkHref="#yqtrzm486a" />
                 </g>
@@ -81,12 +81,13 @@ export const CartSvg = () => {
     );
 };
 
-export const SearchSvg = () => {
+export const SearchSvg = ({ className = '' }: PropsArrow) => {
     return (
         <svg
             stroke="currentColor"
+            className={className}
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="24"
             width="24"
@@ -102,7 +103,7 @@ export const AvatarDefault = ({ className }: PropsArrow) => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             className={className}
             height="40"
@@ -119,7 +120,7 @@ export const ArrowRight = ({ className }: PropsArrow) => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="20"
             width="20"
@@ -135,7 +136,7 @@ export const HomeIcon = () => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="25"
             width="25"
@@ -151,7 +152,7 @@ export const ListIcon = () => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="25"
             width="25"
@@ -167,7 +168,7 @@ export const AccountIcon = () => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="25"
             width="25"
@@ -184,7 +185,7 @@ export const BellIcon = () => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="25"
             width="25"
@@ -192,6 +193,90 @@ export const BellIcon = () => {
             style={{ marginRight: '32px' }}
         >
             <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+        </svg>
+    );
+};
+
+export const LocationIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="2.4rem"
+            width="2.4rem"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+        </svg>
+    );
+};
+export const ManageOrder = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="2.4rem"
+            width="2.4rem"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"></path>
+        </svg>
+    );
+};
+
+export const PersonIcon = () => {
+    return (
+        <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="2.4rem"
+            width="2.4rem"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+        </svg>
+    );
+};
+
+export const ArrowDownThin = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            className={className}
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3.30806 6.43306C3.55214 6.18898 3.94786 6.18898 4.19194 6.43306L10 12.2411L15.8081 6.43306C16.0521 6.18898 16.4479 6.18898 16.6919 6.43306C16.936 6.67714 16.936 7.07286 16.6919 7.31694L10.4419 13.5669C10.1979 13.811 9.80214 13.811 9.55806 13.5669L3.30806 7.31694C3.06398 7.07286 3.06398 6.67714 3.30806 6.43306Z"
+                fill="#808089"
+            ></path>
+        </svg>
+    );
+};
+
+export const Plus = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            className={className}
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
         </svg>
     );
 };

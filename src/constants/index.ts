@@ -26,7 +26,7 @@ import fireMobile from '~/assets/image/fire-mobile.png';
 import chatMobile from '~/assets/image/chat-mobile.png';
 import accountMobile from '~/assets/image/account-mobile.png';
 import { SuggestSearchType } from '~/types';
-import { AccountIcon, BellIcon, HomeIcon, ListIcon } from '~/components/Svg';
+import { AccountIcon, BellIcon, HomeIcon, ListIcon, LocationIcon, ManageOrder, PersonIcon } from '~/components/Svg';
 
 export const HEADER_SEARCH = [
     'Bạn tìm gì hôm nay',
@@ -174,4 +174,46 @@ export const NavbarItemMobile = [
         icon: BellIcon,
         to: '/',
     },
+];
+
+export const InfoAccountList = [
+    {
+        id: 0,
+        to: '/customer/account/edit',
+        title: 'Thông tin tài khoản',
+        icon: PersonIcon,
+    },
+    {
+        id: 1,
+        to: '/sales/order/history',
+        title: 'Quản lý đơn hàng',
+        icon: ManageOrder,
+    },
+    {
+        id: 2,
+        to: '/customer/address',
+        title: 'Sổ địa chỉ',
+        icon: LocationIcon,
+    },
+];
+
+export const days = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    31,
+];
+export const months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+export const years = [0];
+const nowYear = new Date().getFullYear();
+for (let index = nowYear; index > 1899; index--) {
+    years.push(index);
+}
+
+export const TabsOrder = [
+    { id: 0, title: 'Tất cả đơn', status: true },
+    { id: 1, title: 'Chờ thanh toán', status: false },
+    { id: 2, title: 'Đang xử lý', status: false },
+    { id: 3, title: 'Đang vận chuyển', status: false },
+    { id: 4, title: 'Đã giao', status: false },
+    { id: 5, title: 'Đã huỷ', status: false },
 ];

@@ -5,6 +5,7 @@ import style from './TippyAccount.module.scss';
 import classNames from 'classnames/bind';
 import { useAppDispatch } from '~/hooks';
 import { logout } from '~/slices/userSlice';
+import { routers } from '~/config';
 export interface TippyAccountProps {
     children: ReactElement;
 }
@@ -23,10 +24,10 @@ export default function TippyAccount({ children }: TippyAccountProps) {
                 render={(attrs) => (
                     <div className="box" tabIndex={-1} {...attrs}>
                         <div className={cx('wrapper-tippy')}>
-                            <Link className={cx('link')} to="/">
+                            <Link className={cx('link')} to={routers.editAccount}>
                                 <p className={cx('title')}>Thông tin tài khoản</p>
                             </Link>
-                            <Link className={cx('link')} to="/">
+                            <Link className={cx('link')} to={routers.manageOrder}>
                                 <p className={cx('title')}>Đơn hàng của tôi</p>
                             </Link>
                             <Link onClick={handleLogout} className={cx('link')} to="/">

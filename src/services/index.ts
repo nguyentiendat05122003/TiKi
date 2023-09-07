@@ -6,6 +6,10 @@ const axiosClient = axios.create({
 export const axiosClientCity = axios.create({
     baseURL: import.meta.env.VITE_REACT_CITY_API,
 });
+
+export const axiosClientCountry = axios.create({
+    baseURL: import.meta.env.VITE_REACT_COUNTRIES_API,
+});
 export default axiosClient;
 axiosClient.interceptors.request.use(
     function (config) {
@@ -50,6 +54,12 @@ axiosClient.interceptors.response.use(
 );
 
 axiosClientCity.interceptors.response.use(function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response.data;
+});
+
+axiosClientCountry.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response.data;

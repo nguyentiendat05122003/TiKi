@@ -45,7 +45,7 @@ export default function LoginForm({ onClickCloseLogin }: LoginFormProps) {
             const originalPromiseResult = unwrapResult(resultAction);
             if (originalPromiseResult) {
                 enqueueSnackbar('Đăng ký thành công', {
-                    autoHideDuration: 2000,
+                    autoHideDuration: 1000,
                     variant: 'success',
                     anchorOrigin: { vertical: 'top', horizontal: 'right' },
                 });
@@ -55,7 +55,7 @@ export default function LoginForm({ onClickCloseLogin }: LoginFormProps) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             enqueueSnackbar(error, {
-                autoHideDuration: 2000,
+                autoHideDuration: 1000,
                 variant: 'error',
                 anchorOrigin: { vertical: 'top', horizontal: 'right' },
             });
