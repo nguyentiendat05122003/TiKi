@@ -27,6 +27,7 @@ import chatMobile from '~/assets/image/chat-mobile.png';
 import accountMobile from '~/assets/image/account-mobile.png';
 import { SuggestSearchType } from '~/types';
 import { AccountIcon, BellIcon, HomeIcon, ListIcon, LocationIcon, ManageOrder, PersonIcon } from '~/components/Svg';
+import { images } from '~/assets/image';
 
 export const HEADER_SEARCH = [
     'Bạn tìm gì hôm nay',
@@ -216,4 +217,23 @@ export const TabsOrder = [
     { id: 3, title: 'Đang vận chuyển', status: false },
     { id: 4, title: 'Đã giao', status: false },
     { id: 5, title: 'Đã huỷ', status: false },
+];
+
+export const SLIDER = [
+    { id: 0, src: images.slider1 },
+    { id: 1, src: images.slider2 },
+    { id: 2, src: images.slider2 },
+    { id: 3, src: images.slider3 },
+    { id: 4, src: images.slider4 },
+    { id: 5, src: images.slider5 },
+    { id: 6, src: images.slider6 },
+    { id: 7, src: images.slider7 },
+    { id: 8, src: images.slider8 },
+    { id: 9, src: images.slider9 },
+];
+
+export const OPTIONS = [
+    { id: 0, title: 'Tất cả', status: true },
+    { id: 1, title: 'Giá cao đến thấp', status: false },
+    { id: 2, title: 'Giá thấp đến cao', status: false },
 ];

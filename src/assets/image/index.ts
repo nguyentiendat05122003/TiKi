@@ -26,6 +26,19 @@ import security from '~/assets/image/secrity.jpg';
 import zoomIn from '~/assets/image/zoom-in.png';
 import zoomOut from '~/assets/image/zoom-out.png';
 import orderEmpty from '~/assets/image/empty-order.png';
+import slider1 from '~/assets/image/slider1.webp';
+import slider2 from '~/assets/image/slider2.webp';
+import slider3 from '~/assets/image/slider3.webp';
+import slider4 from '~/assets/image/slider4.webp';
+import slider5 from '~/assets/image/slider5.webp';
+import slider6 from '~/assets/image/slider6.webp';
+import slider7 from '~/assets/image/slider7.webp';
+import slider8 from '~/assets/image/slider8.webp';
+import slider9 from '~/assets/image/slider9.webp';
+import banner from '~/assets/image/banner.png';
+import prev from '~/assets/image/prev.png';
+import sticky from '~/assets/image/sticky.png';
+
 export const images = {
     logo,
     noImage,
@@ -56,17 +69,18 @@ export const images = {
     zoomIn,
     zoomOut,
     orderEmpty,
-    //     banner: require('~/assets/image/banner.png'),
-    //     prev: require('~/assets/image//prev.png'),
-    //     slider1: require('~/assets/image/slider1.webp'),
-    //     slider2: require('~/assets/image/slider2.webp'),
-    //     slider3: require('~/assets/image/slider3.webp'),
-    //     slider4: require('~/assets/image/slider4.webp'),
-    //     slider5: require('~/assets/image/slider5.webp'),
-    //     slider6: require('~/assets/image/slider6.webp'),
-    //     slider7: require('~/assets/image/slider7.webp'),
-    //     slider8: require('~/assets/image/slider8.webp'),
-    //     slider9: require('~/assets/image/slider9.webp'),
+    banner,
+    prev,
+    slider1,
+    slider2,
+    slider3,
+    slider4,
+    slider5,
+    slider6,
+    slider7,
+    slider8,
+    slider9,
+    sticky,
     //     arrowActive: require('~/assets/image/arrow-active.png'),
 };
 // imagePaths.ts

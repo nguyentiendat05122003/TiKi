@@ -1,9 +1,20 @@
+.main{
+    width: 1270px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f5f5fa;
+}
 .wrapper{
     display: flex;
-    padding-top: 16px;
     -webkit-box-pack: justify;
     justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
 }
 .container{
-    width: calc(100% - 254px);
+    margin-top: 20px;
+    width: calc(100% - 208px);
+    border-radius: 0px 4px 4px 0px;
 }

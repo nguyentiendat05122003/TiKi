@@ -1,0 +1,17 @@
+.container{
+    padding: 12px 0px 12px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.sticky{
+    background: rgb(238, 238, 238);
+    cursor: pointer;
+    border-color: transparent;
+}
+.img-sticky{
+    max-width: 100%;
+    max-height: 12px;
+    width: auto;
+    width: 34px;
+}

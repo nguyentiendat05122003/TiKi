@@ -6,6 +6,7 @@
     --white-color:#fff;
     --black-color:#000;
     --height-header: 96px;
+    --swiper-pagination-top:80%;
 }
 
 html {
@@ -94,4 +95,15 @@ html *::-webkit-scrollbar-track {
     html{
         overflow-x: hidden;
     }
+}
+.swiper-pagination-bullet{
+    background-color: #fff;
+    display: inline-block;
+    margin: 0px 2px;
+    width: 24px;
+    height: 2px;
+    border-radius: unset;
+}
+.MuiPagination-root,.MuiPagination-ul{
+   justify-content: center;
 }

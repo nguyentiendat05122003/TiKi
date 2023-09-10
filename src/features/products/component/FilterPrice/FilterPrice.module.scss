@@ -1,0 +1,69 @@
+
+.title{
+    margin: 0px;
+    line-height: 20px;
+    display: block;
+    color: rgb(56, 56, 61);
+    font-size: 1.4rem;
+    padding: 12px 0px;
+    font-weight: 500;
+}
+.fast-price-filter{
+
+}
+.price-small-text{
+    color: rgb(128, 128, 137);
+    font-size: 1.2rem;
+    padding-bottom: 8px;
+    margin-top: 4px;
+}
+.item{
+    cursor: pointer;
+}
+.price{
+    background: rgb(238, 238, 238);
+    font-size: 1.2rem;
+    padding: 4px 12px;
+    line-height: 16px;
+    display: inline-block;
+    position: relative;
+    color: rgb(56, 56, 61);
+    border-radius: 12px;
+    margin-bottom: 4px;
+}
+.input-group{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    span{
+        width: 7px;
+        height: 1px;
+        font-size: 0px;
+        display: inline-block;
+        background: rgb(154, 154, 154);
+        margin: 0px 4px;
+        vertical-align: middle;
+    }
+}
+.input-price{
+    flex: 1 1 0%;
+    width: 77px;
+    height: 30px;
+    padding: 0px 8px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    text-align: left;
+    border: 1px solid rgb(184, 184, 184);
+    outline: 0px;
+    font-size: 1.3rem;
+}
+.btn-submit{
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(11, 116, 229);
+    font-size: 1.3rem;
+    color: rgb(11, 116, 229);
+    padding: 5px 15px;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 4px;
+}
