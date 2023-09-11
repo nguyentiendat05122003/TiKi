@@ -1,6 +1,7 @@
 
 .item-link{
     background-color: #fff !important;
+    min-height: 282px;
 }
 .thumbnail{
     width: 200px;
@@ -26,6 +27,18 @@
 }
 .name{
     margin-top: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    white-space: break-spaces;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: rgb(39, 39, 42);
+    margin: 0px;
+    word-break: break-word;
+    max-width: 184px;
     h3{
         display: -webkit-box;
         -webkit-box-orient: vertical;
