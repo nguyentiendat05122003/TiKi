@@ -1,4 +1,4 @@
-import { paginationParamType } from './../../../types/product';
+import { filterParamsType } from './../../../types/product';
 import axiosClient from '~/services';
 import { ParamSearchType, ProductType } from '~/types';
 import { productType } from '~/types/product';
@@ -7,7 +7,7 @@ const productApi = {
     searchProduct(params: ParamSearchType): Promise<ProductType[]> {
         return axiosClient.get('products', { params });
     },
-    async getAll(params: paginationParamType) {
+    async getAll(params: filterParamsType) {
         const newParams = { ...params };
         newParams._start = !params._page || params._page <= 1 ? 0 : (params._page - 1) * (params._limit || 50);
         delete newParams._page;

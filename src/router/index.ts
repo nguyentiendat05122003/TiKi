@@ -1,4 +1,5 @@
 import { routers } from '~/config';
+import Cart from '~/features/cart';
 import { HeaderOnly } from '~/layouts';
 import ManageAccount from '~/layouts/ManageAccount';
 import AccountEdit from '~/pages/AccountEdit';
@@ -14,6 +15,7 @@ const publicRouter: RouterType[] = [
     { path: routers.editAccount, component: AccountEdit, layout: ManageAccount },
     { path: routers.manageOrder, component: OrderHistory, layout: ManageAccount },
     { path: routers.location, component: LocationEdit, layout: ManageAccount },
+    { path: routers.cart, component: Cart, layout: HeaderOnly },
 ];
 
 const privateRouter: RouterType[] = [];

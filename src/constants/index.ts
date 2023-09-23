@@ -1,3 +1,6 @@
+import { FormatPrice } from '~/utils/formatPrice';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { filterParamsType } from './../types/product';
 import home from '~/assets/image/home.png';
 import homeActive from '~/assets/image/home-active.png';
 import iconFace from '~/assets/image/icon.png';
@@ -26,8 +29,17 @@ import fireMobile from '~/assets/image/fire-mobile.png';
 import chatMobile from '~/assets/image/chat-mobile.png';
 import accountMobile from '~/assets/image/account-mobile.png';
 import { SuggestSearchType } from '~/types';
-import { AccountIcon, BellIcon, HomeIcon, ListIcon, LocationIcon, ManageOrder, PersonIcon } from '~/components/Svg';
+import {
+    AccountIcon,
+    BellIcon,
+    HomeIcon,
+    ListIcon,
+    LocationIcon,
+    ManageOrder,
+    PersonIcon,
+} from '~/components/Svg';
 import { images } from '~/assets/image';
+import categoryApi from '~/features/products/api/categoryApi';
 
 export const HEADER_SEARCH = [
     'Bạn tìm gì hôm nay',
@@ -101,10 +113,20 @@ export const Categories: SuggestSearchType[] = [
     { id: 1, to: '/', thumbnail: category2, name: 'Túi chống sốc' },
     { id: 2, to: '/', thumbnail: category3, name: 'Điện thoại Smartphone' },
     { id: 3, to: '/', thumbnail: category4, name: 'Sữa cho bé trên 24 tháng' },
-    { id: 4, to: '/', thumbnail: category5, name: 'Balo, cặp, túi chống sốc laptop' },
+    {
+        id: 4,
+        to: '/',
+        thumbnail: category5,
+        name: 'Balo, cặp, túi chống sốc laptop',
+    },
     { id: 5, to: '/', thumbnail: category6, name: 'Balo và Vali' },
     { id: 6, to: '/', thumbnail: category7, name: 'Đũa, muỗng, nĩa' },
-    { id: 7, to: '/', thumbnail: category8, name: 'Điện Thoại - Máy Tính Bảng' },
+    {
+        id: 7,
+        to: '/',
+        thumbnail: category8,
+        name: 'Điện Thoại - Máy Tính Bảng',
+    },
 ];
 
 export const ListItemBottomNavigator = [
@@ -199,8 +221,8 @@ export const InfoAccountList = [
 ];
 
 export const days = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-    31,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+    26, 27, 28, 29, 30, 31,
 ];
 export const months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -231,9 +253,94 @@ export const SLIDER = [
     { id: 8, src: images.slider8 },
     { id: 9, src: images.slider9 },
 ];
-
+const CategoriesList = [
+    { id: 1, name: 'Thời trang' },
+    { id: 2, name: 'Khẩu trang' },
+    { id: 3, name: 'Làm đẹp' },
+    { id: 4, name: 'Laptop' },
+    { id: 5, name: 'Ổ cứng' },
+    { id: 6, name: 'Điện thoại' },
+];
 export const OPTIONS = [
-    { id: 0, title: 'Tất cả', status: true },
-    { id: 1, title: 'Giá cao đến thấp', status: false },
-    { id: 2, title: 'Giá thấp đến cao', status: false },
+    { id: 1, title: 'Giá cao đến thấp', status: true, value: 'salePrice:DESC' },
+    { id: 2, title: 'Giá thấp đến cao', status: false, value: 'salePrice:ASC' },
+];
+
+export const FILTERS = [
+    {
+        id: 0,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        title: (filters: filterParamsType) => 'Giao hàng miễn phí',
+        isActive: (filters: filterParamsType) => filters.isFreeShip,
+        isVisible: (filters: filterParamsType) => true,
+        isRemove: false,
+        isToggle: true,
+        onRemove: (filters: filterParamsType) => {
+            return;
+        },
+        onToggle: (filters: filterParamsType) => {
+            return { ...filters, isFreeShip: !filters.isFreeShip };
+        },
+    },
+    {
+        id: 1,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        title: (filters: filterParamsType) => 'Có khuyến mãi',
+        isActive: (filters: filterParamsType) => true,
+        isVisible: (filters: filterParamsType) => filters.isPromotion,
+        isRemove: true,
+        isToggle: false,
+        onRemove: (filters: filterParamsType) => {
+            return { ...filters, isPromotion: !filters.isPromotion };
+        },
+        onToggle: (filters: filterParamsType) => {
+            return;
+        },
+    },
+    {
+        id: 2,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        title: (filters: filterParamsType) => {
+            if (filters.salePrice_gte === 380000) {
+                return `Trên ${FormatPrice(filters.salePrice_gte)}`;
+            } else if (filters.salePrice_lte === 60000) {
+                return `Dưới ${FormatPrice(filters.salePrice_lte)}`;
+            } else {
+                return `${FormatPrice(filters.salePrice_gte)}-${FormatPrice(
+                    filters.salePrice_lte,
+                )}`;
+            }
+        },
+        isActive: (filters: filterParamsType) => true,
+        isVisible: (filters: filterParamsType) => filters.salePrice_gte || filters.salePrice_lte,
+        isRemove: true,
+        isToggle: false,
+        onRemove: (filters: filterParamsType) => {
+            delete filters.salePrice_gte;
+            delete filters.salePrice_lte;
+            return { ...filters };
+        },
+        onToggle: (filters: filterParamsType) => {
+            return;
+        },
+    },
+    {
+        id: 3,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        title: (filters: filterParamsType) => {
+            const category = CategoriesList.filter((item) => item.id === filters['category.id']);
+            return category[0].name;
+        },
+        isActive: (filters: filterParamsType) => true,
+        isVisible: (filters: filterParamsType) => filters['category.id'],
+        isRemove: true,
+        isToggle: false,
+        onRemove: (filters: filterParamsType) => {
+            delete filters['category.id'];
+            return { ...filters };
+        },
+        onToggle: (filters: filterParamsType) => {
+            return;
+        },
+    },
 ];

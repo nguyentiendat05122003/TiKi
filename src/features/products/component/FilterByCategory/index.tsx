@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import categoryApi from '../../api/categoryApi';
 import { categoryType } from '~/types/product';
 import SkeletonText from '~/components/SkeletonText';
-export interface FilterByCategoryProps {}
+export interface FilterByCategoryProps {
+    onClick: (id: number) => void;
+}
 
-export default function FilterByCategory(props: FilterByCategoryProps) {
+export default function FilterByCategory({ onClick }: FilterByCategoryProps) {
     const cx = classNames.bind(style);
     const [listCategories, setCategories] = useState<categoryType[]>([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +26,13 @@ export default function FilterByCategory(props: FilterByCategoryProps) {
         };
         fetch();
     }, []);
+    const handleClick = async (id: number) => {
+        try {
+            onClick(id);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <div className={cx('wrapper')}>
             <div className={cx('list-item')}>
@@ -34,7 +43,13 @@ export default function FilterByCategory(props: FilterByCategoryProps) {
                     ) : (
                         <>
                             {listCategories.map((item) => (
-                                <div key={item.id} className={cx('link')}>
+                                <div
+                                    onClick={() => {
+                                        handleClick(item.id);
+                                    }}
+                                    key={item.id}
+                                    className={cx('link')}
+                                >
                                     {item.name}
                                 </div>
                             ))}

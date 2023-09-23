@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { Start } from '~/components/Svg';
 import { productType } from '~/types/product';
 import Image from '~/components/Image';
+import { FormatPrice } from '~/utils/formatPrice';
 interface ProductItemProps {
     item: productType;
 }
@@ -40,7 +41,7 @@ export default function ProductItem({ item }: ProductItemProps) {
                         </div>
                         <div className={cx('price-wrapper')}>
                             <div className={cx('price')}>
-                                {item.originalPrice}
+                                {FormatPrice(item.originalPrice)}
                                 <sup>đ</sup>
                             </div>
                             <div className={cx('discount')}>-{item.promotionPercent}%</div>

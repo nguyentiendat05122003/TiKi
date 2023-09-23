@@ -38,6 +38,7 @@ import slider9 from '~/assets/image/slider9.webp';
 import banner from '~/assets/image/banner.png';
 import prev from '~/assets/image/prev.png';
 import sticky from '~/assets/image/sticky.png';
+import emptyCart from '~/assets/image/empty.png';
 
 export const images = {
     logo,
@@ -81,6 +82,7 @@ export const images = {
     slider8,
     slider9,
     sticky,
+    emptyCart,
     //     arrowActive: require('~/assets/image/arrow-active.png'),
 };
 // imagePaths.ts

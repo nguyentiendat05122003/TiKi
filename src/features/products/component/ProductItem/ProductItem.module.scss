@@ -2,10 +2,11 @@
 .item-link{
     background-color: #fff !important;
     min-height: 282px;
+    overflow: hidden;
 }
 .thumbnail{
-    width: 200px;
-    height: 200px;
+    max-height: 200px;
+    max-width: 200px;
 }
 .img-wrapper{
     .img{

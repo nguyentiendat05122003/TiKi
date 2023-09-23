@@ -122,14 +122,16 @@ export default function Header() {
                                 onClick={handleClick}
                                 listData={listMenuShortCut}
                             />
-                            <div className={cx('cart-wrapper')}>
-                                <div className={cx('cart-container')}>
-                                    <div className={cx('cart-content')}>
-                                        <Image src={images.cart} className={cx('cart-img')} />
-                                        <div className={cx('cart-quantity')}>0</div>
+                            <Link to="/cart">
+                                <div className={cx('cart-wrapper')}>
+                                    <div className={cx('cart-container')}>
+                                        <div className={cx('cart-content')}>
+                                            <Image src={images.cart} className={cx('cart-img')} />
+                                            <div className={cx('cart-quantity')}>0</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                         <div className={cx('bottom-header', 'hide-on-mobile-and-tablet')}>
                             <div className={cx('header-quickLinks')}>

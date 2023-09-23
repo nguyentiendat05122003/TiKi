@@ -16,11 +16,14 @@ export interface productType {
     thumbnail: string;
     [key: string]: any;
 }
-export interface paginationParamType {
+export interface filterParamsType {
     _limit: number;
-    _start: number;
-    _page?: any;
+    _start?: number;
+    _page?: number;
+    _sort: string;
+    [key: string]: any;
 }
+
 export interface paginationResponseType {
     limit: number;
     page: any;
@@ -29,4 +32,14 @@ export interface paginationResponseType {
 export interface getAllProductType {
     data: productType[];
     pagination: paginationResponseType;
+}
+
+export interface FilterPriceType {
+    salePrice_gte: number;
+    salePrice_lte: number;
+}
+
+export interface FilterServiceType {
+    isPromotion?: boolean;
+    isFreeShip?: boolean;
 }
