@@ -253,7 +253,7 @@ export const SLIDER = [
     { id: 8, src: images.slider8 },
     { id: 9, src: images.slider9 },
 ];
-const CategoriesList = [
+const categoriesList = [
     { id: 1, name: 'Thời trang' },
     { id: 2, name: 'Khẩu trang' },
     { id: 3, name: 'Làm đẹp' },
@@ -328,8 +328,10 @@ export const FILTERS = [
         id: 3,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         title: (filters: filterParamsType) => {
-            const category = CategoriesList.filter((item) => item.id === filters['category.id']);
-            return category[0].name;
+            const category = categoriesList.filter(
+                (item) => item.id === Number(filters['category.id']),
+            );
+            return category[0].name || 'test';
         },
         isActive: (filters: filterParamsType) => true,
         isVisible: (filters: filterParamsType) => filters['category.id'],

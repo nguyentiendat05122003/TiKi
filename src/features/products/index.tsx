@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import style from './Product.module.scss';
 import classNames from 'classnames/bind';
 import { OPTIONS } from '~/constants';
@@ -12,15 +12,23 @@ import SkeletonProduct from '~/components/SkeletonProduct';
 import { useAppSelector } from '~/hooks';
 import SideBar from './component/SideBar';
 import Slider from '~/components/Slider';
+import queryString from 'query-string';
+import { useLocation, useNavigate } from 'react-router-dom';
 export default function Product() {
-    const [filters, setFilters] = useState({
-        _page: 1,
-        _limit: 15,
-        _sort: 'salePrice:DESC',
-        isFreeShip: false,
-        isPromotion: false,
-    });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const navigate = useNavigate();
+    const location = useLocation();
+    //   const queryParams = queryString.parse(location.search);
+    const queryParams = useMemo(() => {
+        const params = queryString.parse(location.search);
+        return {
+            ...params,
+            _page: Number(params._page) || 1,
+            _limit: Number(params._limit) || 15,
+            _sort: params._sort?.toString() || 'salePrice:DESC',
+            isFreeShip: (params.isFreeShip === 'true' ? true : false) || false,
+            isPromotion: (params.isPromotion === 'true' ? true : false) || false,
+        };
+    }, [location.search]);
     const [responsePagination, setResponsePagination] = useState<paginationResponseType>({
         page: 0,
         limit: 0,
@@ -32,9 +40,9 @@ export default function Product() {
     const [isLoading, setIsLoading] = useState(false);
     const cx = classNames.bind(style);
     const handleClickSort = (id: number, value: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        setFilters((prev: any) => {
-            return { ...prev, _sort: value };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify({ ...queryParams, _sort: value }),
         });
         setListSort((prev) => {
             prev.forEach((item) => {
@@ -51,7 +59,7 @@ export default function Product() {
         const fetch = async () => {
             try {
                 setIsLoading(true);
-                const res = await productApi.getAll(filters);
+                const res = await productApi.getAll(queryParams);
                 setProductList(res.data);
                 setIsLoading(false);
                 setResponsePagination(res.pagination);
@@ -61,34 +69,37 @@ export default function Product() {
             }
         };
         fetch();
-    }, [filters]);
+    }, [queryParams]);
     const handleChangePage = (page: number) => {
-        setFilters((prev) => {
-            return { ...prev, _page: page };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify({ ...queryParams, _page: page }),
         });
     };
     const handleIncreasePage = () => {
-        setFilters((prev) => {
-            return { ...prev, _page: prev._page + 1 };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify({ ...queryParams, _page: queryParams._page + 1 }),
         });
     };
     const handleDecreasePage = () => {
-        setFilters((prev) => {
-            if (prev._page <= 1) {
-                return prev;
-            }
-            return { ...prev, _page: prev._page - 1 };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify({ ...queryParams, _page: queryParams._page - 1 }),
         });
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChangeFilters = (newFilter: any) => {
-        setFilters((prev) => {
-            return { ...prev, ...newFilter };
+        navigate({
+            pathname: location.pathname,
+            search: queryString.stringify({ ...queryParams, ...newFilter }),
         });
     };
     return (
         <div className={cx('main')}>
-            <div>{isMobile || <SideBar filters={filters} onChange={handleChangeFilters} />}</div>
+            <div>
+                {isMobile || <SideBar filters={queryParams} onChange={handleChangeFilters} />}
+            </div>
             <div className={cx('container')}>
                 {isMobile || <Slider />}
                 <div className={cx('wrapper')}>
@@ -114,7 +125,7 @@ export default function Product() {
                         </div>
                         <div className={cx('search-navigator')}>
                             <div className={cx('paging')}>
-                                <span className={cx('current')}>{filters._page || 1}</span>/
+                                <span className={cx('current')}>{queryParams._page || 1}</span>/
                                 <span className={cx('last')}>
                                     {Math.ceil(
                                         responsePagination.total / responsePagination.limit,
@@ -131,7 +142,9 @@ export default function Product() {
                             </div>
                         </div>
                     </div>
-                    {isMobile || <FilterView filters={filters} onChange={handleChangeFilters} />}
+                    {isMobile || (
+                        <FilterView filters={queryParams} onChange={handleChangeFilters} />
+                    )}
                 </div>
                 {isLoading ? (
                     <SkeletonProduct lengthArr={15} />
@@ -144,7 +157,7 @@ export default function Product() {
                             Math.ceil(responsePagination.total / responsePagination.limit) || 0
                         }
                         onClickPage={handleChangePage}
-                        page={filters._page}
+                        page={queryParams._page}
                     />
                 )}
             </div>
