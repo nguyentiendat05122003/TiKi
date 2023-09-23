@@ -299,11 +299,10 @@ export const FILTERS = [
     },
     {
         id: 2,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         title: (filters: filterParamsType) => {
-            if (filters.salePrice_gte === 380000) {
+            if (Number(filters.salePrice_gte) === 380000) {
                 return `Trên ${FormatPrice(filters.salePrice_gte)}`;
-            } else if (filters.salePrice_lte === 60000) {
+            } else if (Number(filters.salePrice_lte) === 60000) {
                 return `Dưới ${FormatPrice(filters.salePrice_lte)}`;
             } else {
                 return `${FormatPrice(filters.salePrice_gte)}-${FormatPrice(
@@ -326,7 +325,6 @@ export const FILTERS = [
     },
     {
         id: 3,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         title: (filters: filterParamsType) => {
             const category = categoriesList.filter(
                 (item) => item.id === Number(filters['category.id']),
