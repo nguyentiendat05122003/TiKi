@@ -9,9 +9,12 @@ const productApi = {
     },
     async getAll(params: filterParamsType) {
         const newParams = { ...params };
-        newParams._start = !params._page || params._page <= 1 ? 0 : (params._page - 1) * (params._limit || 50);
+        newParams._start =
+            !params._page || params._page <= 1 ? 0 : (params._page - 1) * (params._limit || 50);
         delete newParams._page;
-        const productList = (await axiosClient.get('/products', { params: newParams })) as productType[];
+        const productList = (await axiosClient.get('/products', {
+            params: newParams,
+        })) as productType[];
         const count = (await axiosClient.get('/products/count', { params: newParams })) as number;
         return {
             data: productList,
@@ -21,6 +24,9 @@ const productApi = {
                 total: count,
             },
         };
+    },
+    getProduct(params: number): Promise<ProductType> {
+        return axiosClient.get(`products/${params}`);
     },
 };
 export default productApi;

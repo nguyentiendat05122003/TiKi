@@ -39,7 +39,11 @@ import banner from '~/assets/image/banner.png';
 import prev from '~/assets/image/prev.png';
 import sticky from '~/assets/image/sticky.png';
 import emptyCart from '~/assets/image/empty.png';
-
+import real from '~/assets/image/real.png';
+import now from '~/assets/image/sticky.png';
+import sun from '~/assets/image/sun.png';
+import shock from '~/assets/image/shock.png';
+import insurance from '~/assets/image/insurance.jpg';
 export const images = {
     logo,
     noImage,
@@ -83,6 +87,11 @@ export const images = {
     slider9,
     sticky,
     emptyCart,
+    real,
+    now,
+    sun,
+    shock,
+    insurance,
     //     arrowActive: require('~/assets/image/arrow-active.png'),
 };
 // imagePaths.ts

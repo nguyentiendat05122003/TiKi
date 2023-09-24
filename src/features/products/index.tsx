@@ -17,7 +17,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Product() {
     const navigate = useNavigate();
     const location = useLocation();
-    //   const queryParams = queryString.parse(location.search);
     const queryParams = useMemo(() => {
         const params = queryString.parse(location.search);
         return {

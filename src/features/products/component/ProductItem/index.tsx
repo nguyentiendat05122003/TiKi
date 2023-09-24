@@ -11,7 +11,7 @@ interface ProductItemProps {
 export default function ProductItem({ item }: ProductItemProps) {
     const cx = classNames.bind(style);
     return (
-        <Link className={cx('item-link')} to="/">
+        <Link className={cx('item-link')} to={`/product/${item.id}`}>
             <span style={{ flexDirection: 'column' }}>
                 <div className={cx('thumbnail')}>
                     <div className={cx('img-wrapper')}>

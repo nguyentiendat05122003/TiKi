@@ -21,6 +21,7 @@
     "@tippyjs/react": "^4.2.6",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "dompurify": "^3.0.5",
     "notistack": "^3.0.1",
     "path": "^0.12.7",
     "query-string": "^8.1.0",
@@ -35,6 +36,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.3",
     "@types/node": "^20.4.10",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

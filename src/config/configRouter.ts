@@ -5,4 +5,5 @@ export const routers = {
     manageOrder: '/sales/order/history',
     location: '/customer/address',
     cart: '/cart',
+    detailProduct: '/product/:id',
 };

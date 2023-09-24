@@ -39,23 +39,25 @@ export const ArrowDown = forwardRef<SVGSVGElement, PropsArrow>(({ className }: P
     );
 });
 
-export const ArrowLeft = forwardRef<SVGSVGElement, PropsArrow>(({ className = '' }: PropsArrow, ref) => {
-    return (
-        <svg
-            ref={ref}
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            height="30"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-            className={className}
-        >
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-        </svg>
-    );
-});
+export const ArrowLeft = forwardRef<SVGSVGElement, PropsArrow>(
+    ({ className = '' }: PropsArrow, ref) => {
+        return (
+            <svg
+                ref={ref}
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="30"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                className={className}
+            >
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            </svg>
+        );
+    },
+);
 
 export const CartSvg = () => {
     return (
@@ -301,6 +303,83 @@ export const Start = () => {
                     <path fill="#fff" transform="translate(1 1.5)" d="M0 0h10v10H0z"></path>
                 </clipPath>
             </defs>
+        </svg>
+    );
+};
+
+export const DecreaseIcon = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            className={className}
+        >
+            <defs>
+                <path
+                    id="ajeife9ema"
+                    d="M11.667 1.667L6.672 1.667 4.994 1.667 0 1.667 0 0 4.994 0 11.667 0z"
+                />
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g transform="translate(-334 -5910) translate(80 5570) translate(214 340) translate(40) translate(4.167 9.167)">
+                                    <use fill="#787878" />
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    );
+};
+
+export const IncreaseIcon = ({ className }: PropsArrow) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            className={className}
+        >
+            <defs>
+                <path
+                    id="jfmgrwavha"
+                    d="M11.667 6.655L6.672 6.655 6.672 11.667 4.994 11.667 4.994 6.655 0 6.655 0 5.011 4.994 5.011 4.994 0 6.672 0 6.672 5.011 11.667 5.011z"
+                />
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g>
+                                            <g transform="translate(-447 -3846) translate(80 3626) translate(299 140) translate(0 44) translate(0 32) translate(64) translate(4 4) translate(4.167 4.167)">
+                                                <mask id="4rqhsoutfb" fill="#fff"></mask>
+                                                <use fill="#787878" />
+                                                <g fill="#787878" mask="url(#4rqhsoutfb)">
+                                                    <path
+                                                        d="M0 0H20V20H0z"
+                                                        transform="translate(-4.167 -4.167)"
+                                                    />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
         </svg>
     );
 };
