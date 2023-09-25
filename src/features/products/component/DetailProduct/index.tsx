@@ -9,9 +9,16 @@ import { Start } from '~/components/Svg';
 import { ProductType } from '~/types';
 import productApi from '../../api';
 import style from './DetailProduct.module.scss';
+import SlideProduct from '../SlideProduct';
+import { useAppSelector } from '~/hooks';
+import { FormatLocationFull } from '~/utils/formatLocationFull';
+import Location from '~/features/Location';
+import { FormatPrice } from '~/utils/formatPrice';
 export default function DetailProduct() {
     const cx = classNames.bind(style);
     const [quantity, setQuantity] = useState(1);
+    const location = useAppSelector((state) => state.location.value);
+    const [isShowLocation, setIsLocation] = useState(false);
     const match = useMatch({
         path: '/product/:id',
     });
@@ -24,35 +31,28 @@ export default function DetailProduct() {
         };
         fetch();
     }, []);
+    const handleIncreaseQuantity = () => {
+        setQuantity((prev) => {
+            return prev + 1;
+        });
+    };
+    const handleDecreaseQuantity = () => {
+        setQuantity((prev: number) => {
+            if (prev === 1) {
+                return 1;
+            }
+            return prev - 1;
+        });
+    };
+    const handleClickLocation = () => {
+        setIsLocation(!isShowLocation);
+    };
     const safeDesc = DOMPurify.sanitize(product?.description || '<p>Error</p>');
     return (
         <div className={cx('wrapper-container')}>
             <div className={cx('container')}>
                 <div className={cx('info-product')}>
-                    <div className={cx('img-product')}>
-                        <div className={cx('img-wrapper')}>
-                            <div className={cx('img-main')}>
-                                <Image
-                                    src={
-                                        'https://salt.tikicdn.com/cache/368x368/ts/product/f5/52/80/675e31a670afc560e7b0e46c0b65fb4f.png.webp'
-                                    }
-                                    className={cx('img')}
-                                />
-                            </div>
-                            <div className={cx('thumnail-list')}>
-                                <div className={cx('content')}>
-                                    <div className={cx('slide')}>
-                                        <Image
-                                            className={cx('slide-img')}
-                                            src={
-                                                'https://salt.tikicdn.com/cache/368x368/ts/product/f5/52/80/675e31a670afc560e7b0e46c0b65fb4f.png.webp'
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <SlideProduct />
                     <div className={cx('content-product')}>
                         <div className={cx('content-wrapper')}>
                             <div className={cx('info-main-product')}>
@@ -63,7 +63,7 @@ export default function DetailProduct() {
                                                 <Image className={cx('img')} src={images.real} />
                                             </div>
                                         </div>
-                                        <h1 className={cx('title')}>Apple iPhone 14 Pro Max</h1>
+                                        <h1 className={cx('title')}>{product?.name}</h1>
                                         <div style={{ display: 'flex' }}>
                                             <div className={cx('rating')}>
                                                 <div className={cx('review')}>
@@ -84,7 +84,7 @@ export default function DetailProduct() {
                                     </div>
                                     <div className={cx('price-product')}>
                                         <div className={cx('current-price')}>
-                                            26.250.000
+                                            {FormatPrice(product?.salePrice || 1)}
                                             <sup>đ</sup>
                                         </div>
                                         <div className={cx('discount')}>-23%</div>
@@ -96,9 +96,9 @@ export default function DetailProduct() {
                                 <div className={cx('location-wrapper')}>
                                     <div className={cx('location')}>
                                         <div className={cx('current-location')}>
-                                            Giao đến Q. Ba Đình, P. Cống Vị, Hà Nội
+                                            Giao đến {FormatLocationFull(location)}
                                         </div>
-                                        <span>Đổi</span>
+                                        <span onClick={handleClickLocation}>Đổi</span>
                                     </div>
                                 </div>
                                 <div className={cx('service')}>
@@ -206,15 +206,21 @@ export default function DetailProduct() {
                             <div className={cx('quantity')}>
                                 <p>Số lượng</p>
                                 <div className={cx('group-input')}>
-                                    <button className={cx('btn-change')}>
+                                    <button
+                                        onClick={handleDecreaseQuantity}
+                                        className={cx('btn-change')}
+                                    >
                                         <span>-</span>
                                     </button>
                                     <input
                                         value={quantity}
                                         className={cx('input-quantity')}
-                                        type="text"
+                                        type="number"
                                     />
-                                    <button className={cx('btn-change')}>
+                                    <button
+                                        onClick={handleIncreaseQuantity}
+                                        className={cx('btn-change')}
+                                    >
                                         <span>+</span>
                                     </button>
                                 </div>
@@ -222,7 +228,8 @@ export default function DetailProduct() {
                             <div className={cx('price-wrapper')}>
                                 <div className={cx('price-header')}>Tạm tính</div>
                                 <div className={cx('price')}>
-                                    26.250.000 <sup>đ</sup>
+                                    {FormatPrice(product?.salePrice || 1)}
+                                    <sup>đ</sup>
                                 </div>
                             </div>
                             <div className={cx('group-button')}>
@@ -233,6 +240,7 @@ export default function DetailProduct() {
                     </div>
                 </div>
             </div>
+            {isShowLocation && <Location onClick={handleClickLocation} />}
         </div>
     );
 }

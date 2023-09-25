@@ -28,6 +28,17 @@ import menuActiveMobile from '~/assets/image/menu-active-mobile.png';
 import fireMobile from '~/assets/image/fire-mobile.png';
 import chatMobile from '~/assets/image/chat-mobile.png';
 import accountMobile from '~/assets/image/account-mobile.png';
+import sliderProduct1 from '~/assets/image/sliderProduct1.webp';
+import sliderProduct2 from '~/assets/image/sliderProduct2.webp';
+import sliderProduct3 from '~/assets/image/sliderProduct3.webp';
+import sliderProduct4 from '~/assets/image/sliderProduct4.webp';
+import sliderProduct5 from '~/assets/image/sliderProduct5.webp';
+import sliderProduct6 from '~/assets/image/sliderProduct6.webp';
+import sliderProduct7 from '~/assets/image/sliderProduct7.webp';
+import sliderProduct8 from '~/assets/image/sliderProduct8.webp';
+import sliderProduct9 from '~/assets/image/sliderProduct9.webp';
+import sliderProduct10 from '~/assets/image/sliderProduct10.webp';
+
 import { SuggestSearchType } from '~/types';
 import {
     AccountIcon,
@@ -48,6 +59,18 @@ export const HEADER_SEARCH = [
     'Rẻ mỗi ngày, không cần săn sales',
 ];
 
+export const LIST_SLIDER_PRODUCT = [
+    sliderProduct1,
+    sliderProduct2,
+    sliderProduct3,
+    sliderProduct4,
+    sliderProduct5,
+    sliderProduct6,
+    sliderProduct7,
+    sliderProduct8,
+    sliderProduct9,
+    sliderProduct10,
+];
 export const LIST_MENU_SHORT_USER = [
     {
         id: 0,

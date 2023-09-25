@@ -46,7 +46,10 @@ export default function Header() {
                     }
                 } else if (locationRef.current) {
                     const classNameLocation = locationRef.current?.className || '';
-                    if (!element?.closest(`.${classNameLocation}`) && !element.matches(`.${cx('location-wrapper')}`)) {
+                    if (
+                        !element?.closest(`.${classNameLocation}`) &&
+                        !element.matches(`.${cx('location-wrapper')}`)
+                    ) {
                         setIsShowLocation(false);
                     }
                 }
@@ -97,7 +100,11 @@ export default function Header() {
                                 {isMobile ? (
                                     <>
                                         {!isShowHistory && (
-                                            <Search onChange={handleChange} value={searchValue} ref={searchRef} />
+                                            <Search
+                                                onChange={handleChange}
+                                                value={searchValue}
+                                                ref={searchRef}
+                                            />
                                         )}
                                         {isShowHistory && (
                                             <SearchMobile
@@ -109,8 +116,14 @@ export default function Header() {
                                     </>
                                 ) : (
                                     <>
-                                        <Search onChange={handleChange} value={searchValue} ref={searchRef} />
-                                        {isShowHistory && <HistorySearch data={searchResults} ref={historyRef} />}
+                                        <Search
+                                            onChange={handleChange}
+                                            value={searchValue}
+                                            ref={searchRef}
+                                        />
+                                        {isShowHistory && (
+                                            <HistorySearch data={searchResults} ref={historyRef} />
+                                        )}
                                     </>
                                 )}
                             </div>
@@ -137,7 +150,11 @@ export default function Header() {
                             <div className={cx('header-quickLinks')}>
                                 {HEADER_LINKS.map((item) => {
                                     return (
-                                        <Link className={cx('header-quickLink-item')} key={item.id} to={item.path}>
+                                        <Link
+                                            className={cx('header-quickLink-item')}
+                                            key={item.id}
+                                            to={item.path}
+                                        >
                                             {item.title}
                                         </Link>
                                     );
@@ -145,10 +162,13 @@ export default function Header() {
                             </div>
                             <div
                                 onClick={handleShowLocation}
-                                className={cx('location-wrapper', 'hide-on-mobile-and-tablet')}
+                                className={cx('-wrapper', 'hide-on-mobile-and-tablet')}
                             >
                                 <div className={cx('location-container')}>
-                                    <Image src={images.location} className={cx('header-icon-location')} />
+                                    <Image
+                                        src={images.location}
+                                        className={cx('header-icon-location')}
+                                    />
                                     <h4 className={cx('title')}>Giao đến:</h4>
                                     <div className={cx('address')}>{FormatLocation(location)}</div>
                                 </div>
