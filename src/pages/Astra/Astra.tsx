@@ -1,7 +1,7 @@
 import Image from '~/components/Image';
 import style from './Astra.module.scss';
 import classNames from 'classnames/bind';
-import { Arrow, ArrowRight } from '~/components/Svg';
+import { Arrow } from '~/components/Svg';
 export default function Astra() {
     const cx = classNames.bind(style);
     return (
@@ -14,10 +14,10 @@ export default function Astra() {
                                 <div className={cx('card-wrapper')}>
                                     <div className={cx('card-content')}>
                                         <div className={cx('header')}>
-                                            <div className="header-wrapper">
+                                            <div className={cx('header-wrapper')}>
                                                 <span className={cx('title')}>
                                                     KHÁCH HÀNG
-                                                    <Arrow className="" />
+                                                    <Arrow className={cx('')} />
                                                 </span>
                                                 <span className={cx('name-customer')}>
                                                     Đạt Nguyễn Tiến
@@ -45,7 +45,7 @@ export default function Astra() {
                                         </div>
                                         <span className={cx('value')}>0</span>
                                     </div>
-                                    <Arrow className="" />
+                                    <Arrow className={cx('')} />
                                 </div>
                                 <div className={cx('balance-wrapper')}>
                                     <div className={cx('content')}>
@@ -66,6 +66,100 @@ export default function Astra() {
                                             >
                                                 39781 khách hàng đã trở thành hội viên VIP
                                             </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('content-right')}>
+                        <div className={cx('content-right-wrapper')}>
+                            <div className={cx('benefitsWrapper')}>
+                                <div className={cx('heading')}>Tìm hiểu Astra Rewards</div>
+                                <div className={cx('content')}>
+                                    <div className={cx('item')}>
+                                        <Image
+                                            className={cx('item-img')}
+                                            src="https://salt.tikicdn.com/ts/ta/0d/7d/a4/fcf11517325abbaf25512d72e0026979.png"
+                                        />
+                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                    </div>
+                                    <div className={cx('item')}>
+                                        <Image
+                                            className={cx('item-img')}
+                                            src="https://salt.tikicdn.com/ts/ta/2f/4d/05/cf126b3eb6bbc249f3c94af8b0356757.png"
+                                        />
+                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                    </div>
+                                    <div className={cx('item')}>
+                                        <Image
+                                            className={cx('item-img')}
+                                            src="https://salt.tikicdn.com/ts/ta/51/27/1d/c8deefc3b4da02dfb50f9f08b1ecadc9.png"
+                                        />
+                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                    </div>
+                                    <div className={cx('item')}>
+                                        <Image
+                                            className={cx('item-img')}
+                                            src="https://salt.tikicdn.com/ts/ta/b0/a0/78/5a660899c4f1857be1721beb1ff0fa7d.png"
+                                        />
+                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                    </div>
+                                    <div className={cx('item')}>
+                                        <Image
+                                            className={cx('item-img')}
+                                            src="https://salt.tikicdn.com/ts/ta/2f/4d/05/cf126b3eb6bbc249f3c94af8b0356757.png"
+                                        />
+                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={cx('sub-benefit')}>
+                                <div className={cx('heading')}>Astra (ASA) là gì?</div>
+                                <div className={cx('content')}>
+                                    <div className={cx('introItem')}>
+                                        <div className={cx('introItem-img')}>
+                                            <Image
+                                                className={cx('img')}
+                                                src="https://salt.tikicdn.com/ts/ta/02/d9/4a/0f776a7f7a4e2f77610c27a9fb952a0b.png"
+                                            />
+                                        </div>
+                                        <div className={cx('introItem-text')}>
+                                            <p className={cx('sub-title')}>Điểm thưởng mua sắm</p>
+                                            <div className={cx('desc')}>
+                                                Hoàn điểm thưởng ASA khi mua hàng, mức hoàn tuỳ gói
+                                                hội viên.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={cx('introItem')}>
+                                        <div className={cx('introItem-img')}>
+                                            <Image
+                                                className={cx('img')}
+                                                src="https://salt.tikicdn.com/ts/ta/33/ce/1f/82bebab75541c839757d107417ecc66d.png"
+                                            />
+                                        </div>
+                                        <div className={cx('introItem-text')}>
+                                            <p className={cx('sub-title')}>Điểm thưởng mua sắm</p>
+                                            <div className={cx('desc')}>
+                                                Hoàn điểm thưởng ASA khi mua hàng, mức hoàn tuỳ gói
+                                                hội viên.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={cx('introItem')}>
+                                        <div className={cx('introItem-img')}>
+                                            <Image
+                                                className={cx('img')}
+                                                src="https://salt.tikicdn.com/ts/ta/0e/04/53/624df741aacffd7ed40003037315e9da.png"
+                                            />
+                                        </div>
+                                        <div className={cx('introItem-text')}>
+                                            <p className={cx('sub-title')}>Điểm thưởng mua sắm</p>
+                                            <div className={cx('desc')}>
+                                                Hoàn điểm thưởng ASA khi mua hàng, mức hoàn tuỳ gói
+                                                hội viên.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
