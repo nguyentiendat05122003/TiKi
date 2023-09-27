@@ -4,7 +4,7 @@ import DetailProduct from '~/features/products/component/DetailProduct';
 import { HeaderOnly } from '~/layouts';
 import ManageAccount from '~/layouts/ManageAccount';
 import AccountEdit from '~/pages/AccountEdit';
-import Astra from '~/pages/Astra';
+import Astra from '~/pages/Astra/Astra';
 import { Home } from '~/pages/Home';
 import LocationEdit from '~/pages/Location';
 import OrderHistory from '~/pages/OrderHistory';

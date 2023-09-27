@@ -32,9 +32,9 @@ export default function SlideProduct() {
                         modules={[FreeMode, Navigation, Thumbs]}
                         loop={true}
                     >
-                        {LIST_SLIDER_PRODUCT.map((item) => {
+                        {LIST_SLIDER_PRODUCT.map((item, idx) => {
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide key={idx}>
                                     <Image src={item} className={cx('img')} />
                                 </SwiperSlide>
                             );
@@ -56,9 +56,9 @@ export default function SlideProduct() {
                         freeMode={true}
                         modules={[FreeMode, Navigation, Thumbs]}
                     >
-                        {LIST_SLIDER_PRODUCT.map((item) => {
+                        {LIST_SLIDER_PRODUCT.map((item, idx) => {
                             return (
-                                <SwiperSlide className={cx('slide-wrapper')}>
+                                <SwiperSlide key={idx} className={cx('slide-wrapper')}>
                                     <div className={cx('slide')}>
                                         <Image className={cx('slide-img')} src={item} />
                                     </div>

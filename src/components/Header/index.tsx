@@ -90,7 +90,13 @@ export default function Header() {
             <div className={cx('container-header')}>
                 <div className={cx('container-wrapper')}>
                     <div className={cx('logo-menu')}>
-                        <Link to="/" className={cx('tiki-logo', 'hide-on-mobile')}>
+                        <Link
+                            onClick={() => {
+                                handleClick(0);
+                            }}
+                            to="/"
+                            className={cx('tiki-logo', 'hide-on-mobile')}
+                        >
                             <Image src={images.logo} className={cx('logo')} alt="tiki-logo" />
                         </Link>
                     </div>

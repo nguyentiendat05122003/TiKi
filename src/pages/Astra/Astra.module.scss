@@ -1,0 +1,173 @@
+.wrapper{
+    background-image: url(https://salt.tikicdn.com/cache/w600/ts/ta/dc/b6/01/15f222251950b3ebca4070a2a87bf62a.png.jpg), linear-gradient(rgb(226, 220, 251) 0%, rgb(245, 245, 250) 100%);
+    min-height: calc(100vh - 270px);
+    background-size: 100% 300px, cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-color: rgb(245, 245, 250);
+    position: relative;
+    overflow-y: auto;
+}
+.container-wrapper{
+    width: 100vw;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: hidden;
+}
+.container{
+    display: flex;
+    place-content: stretch flex-start;
+    -webkit-box-align: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    flex-flow: wrap;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+}
+.content-left{
+    align-self: stretch;
+    width: 330px;
+}
+.content-left-wrapper{
+    padding-top: 24px;
+    display: flex;
+    place-content: stretch flex-start;
+    -webkit-box-align: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+}
+.content-left-main{
+}
+.card-wrapper{
+    margin-top: -12px;
+    padding-top: 12px;
+    position: relative;
+    border-radius: 12px;
+    min-height: 178px;
+    overflow: hidden;
+}
+.card-content{
+    position: relative;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: rgba(40, 40, 43, 0.1) 0px 4px 8px 0px;
+    min-height: 178px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    border: 1px rgb(35,80,161) dotted;
+    min-width: 330px;
+}
+.header{
+    display: flex;
+    place-content: stretch space-between;
+    -webkit-box-align: stretch;
+    box-sizing: border-box;
+    width: 100%;
+    flex-flow: wrap;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    color: var(--white-color);
+    .title{
+        display: inline;
+        line-height: 27px;
+        font-size: 18px;
+        letter-spacing: 0.6px;
+        font-weight: 700;
+    }
+    .name-customer{
+        display: block;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        font-weight: 400;
+        height: 21px;
+    }
+}
+.content{
+    flex-grow: 0;
+    .content-title{
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        min-height: 33px;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0px;
+        font-weight: 400;
+    }
+    .value{
+        font-size: 20px;
+        min-height: 23px;
+        line-height: 32px;
+        letter-spacing: 0.6px;
+        font-weight: 700;
+        color: rgb(255, 255, 255);
+    }
+}
+.content-left-below{
+    min-width: 330px;
+    .balance-wrapper{
+        margin-top: 16px;
+        color: white;
+        background: rgb(255, 255, 255);
+        border-radius: 8px;
+        padding: 16px;
+        width: 100%;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+    .content{
+        display: flex;
+        place-content: stretch flex-start;
+        -webkit-box-align: stretch;
+        box-sizing: border-box;
+        width: 100%;
+        flex-flow: wrap;
+        align-items: flex-start;
+        -webkit-box-pack: start;
+    }
+    .header{
+        display: flex;
+        place-content: stretch flex-start;
+        box-sizing: border-box;
+        width: 100%;
+        flex-flow: wrap;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+    }
+    .img{
+        width: 20px;
+        height: 20px;
+        margin-right: 8px
+    }
+    .header-title{
+        color: rgb(39, 39, 42);
+        min-height: 20px;
+        font-size: 1.4rem;
+        line-height: 21px;
+        letter-spacing: 0px;
+        font-weight: 500;
+    }
+    .value{
+        color: rgb(111, 85, 237);
+        margin-left: 28px;
+        margin-top: 4px;
+        min-height: 24px;
+        font-size: 1.6rem;
+        line-height: 24px;
+        letter-spacing: 0px;
+        font-weight: 700;
+    }
+}

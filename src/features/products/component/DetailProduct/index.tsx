@@ -1,6 +1,5 @@
 import { Checkbox } from '@mui/material';
 import classNames from 'classnames/bind';
-import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { useMatch } from 'react-router-dom';
 import { images } from '~/assets/image';
@@ -14,6 +13,7 @@ import { useAppSelector } from '~/hooks';
 import { FormatLocationFull } from '~/utils/formatLocationFull';
 import Location from '~/features/Location';
 import { FormatPrice } from '~/utils/formatPrice';
+import { useSnackbar } from 'notistack';
 export default function DetailProduct() {
     const cx = classNames.bind(style);
     const [quantity, setQuantity] = useState(1);
@@ -23,11 +23,14 @@ export default function DetailProduct() {
         path: '/product/:id',
     });
     const [product, setProduct] = useState<ProductType>();
+    const [insuranceProduct, setInsuranceProduct] = useState(0);
+    const { enqueueSnackbar } = useSnackbar();
     useEffect(() => {
         const fetch = async () => {
             const id = Number(match?.params.id);
             const res = await productApi.getProduct(id);
             setProduct(res);
+            setInsuranceProduct(res.originalPrice * 0.005);
         };
         fetch();
     }, []);
@@ -47,7 +50,6 @@ export default function DetailProduct() {
     const handleClickLocation = () => {
         setIsLocation(!isShowLocation);
     };
-    const safeDesc = DOMPurify.sanitize(product?.description || '<p>Error</p>');
     return (
         <div className={cx('wrapper-container')}>
             <div className={cx('container')}>
@@ -185,7 +187,7 @@ export default function DetailProduct() {
                                                 </div>
                                             </span>
                                             <span className={cx('price')}>
-                                                667.000
+                                                {FormatPrice(insuranceProduct)}
                                                 <sup>đ</sup>
                                             </span>
                                         </div>
@@ -193,7 +195,6 @@ export default function DetailProduct() {
                                     </div>
                                 </div>
                             </div>
-                            <div dangerouslySetInnerHTML={{ __html: safeDesc }}></div>
                         </div>
                     </div>
                 </div>
@@ -216,6 +217,7 @@ export default function DetailProduct() {
                                         value={quantity}
                                         className={cx('input-quantity')}
                                         type="number"
+                                        readOnly
                                     />
                                     <button
                                         onClick={handleIncreaseQuantity}
@@ -228,12 +230,24 @@ export default function DetailProduct() {
                             <div className={cx('price-wrapper')}>
                                 <div className={cx('price-header')}>Tạm tính</div>
                                 <div className={cx('price')}>
-                                    {FormatPrice(product?.salePrice || 1)}
+                                    {FormatPrice((product?.salePrice || 1) * quantity)}
                                     <sup>đ</sup>
                                 </div>
                             </div>
                             <div className={cx('group-button')}>
-                                <button className={cx('btn-primary')}> Mua ngay</button>
+                                <button
+                                    onClick={() =>
+                                        enqueueSnackbar('Chức năng này chưa hoàn thiện', {
+                                            variant: 'warning',
+                                            anchorOrigin: { vertical: 'top', horizontal: 'right' },
+                                            autoHideDuration: 1000,
+                                        })
+                                    }
+                                    className={cx('btn-primary')}
+                                >
+                                    {' '}
+                                    Mua ngay
+                                </button>
                                 <button className={cx('btn-outline')}>Thêm vào giỏ</button>
                             </div>
                         </div>
