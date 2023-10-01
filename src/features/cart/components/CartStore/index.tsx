@@ -1,10 +1,15 @@
-export interface CartStoreProps {}
 import { Checkbox, FormControlLabel } from '@mui/material';
 import style from './CartStore.module.scss';
 import classNames from 'classnames/bind';
 import { DeleteIcon } from '~/components/Svg';
 import Image from '~/components/Image';
-export default function CartStore(props: CartStoreProps) {
+import { itemInCartType } from '~/types/cart';
+import { FormatPrice } from '~/utils/formatPrice';
+
+export interface CartStoreProps {
+    data: itemInCartType[] | [];
+}
+export default function CartStore({ data }: CartStoreProps) {
     const cx = classNames.bind(style);
     return (
         <div className={cx('container')}>
@@ -24,98 +29,70 @@ export default function CartStore(props: CartStoreProps) {
                         <DeleteIcon className={cx('')} />
                     </span>
                 </div>
-                <div className={cx('item-container')}>
-                    <div className={cx('item')}>
-                        <div className={cx('item-container')}>
-                            <div className={cx('row')}>
-                                <div className={cx('col-1')}>
-                                    <div className={cx('info-item')}>
-                                        <FormControlLabel
-                                            sx={{ fontSize: '1.2rem' }}
-                                            control={<Checkbox name="removeItem" />}
-                                            label={
-                                                <span className={cx('text')}>
-                                                    Apple iPhone 14 Pro Max 128GB Tím
+                {data.map((cartItem, idx) => {
+                    return (
+                        <div key={idx} className={cx('item-container')}>
+                            <div className={cx('item')}>
+                                <div className={cx('item-container')}>
+                                    <div className={cx('row')}>
+                                        <div className={cx('col-1')}>
+                                            <div className={cx('info-item')}>
+                                                <FormControlLabel
+                                                    sx={{ fontSize: '1.2rem' }}
+                                                    control={<Checkbox name="removeItem" />}
+                                                    label={
+                                                        <span className={cx('text')}>
+                                                            {cartItem.item?.name}
+                                                        </span>
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={cx('col-2')}>
+                                            <p className={cx('product-prices')}>
+                                                <span className={cx('real')}>
+                                                    {FormatPrice(cartItem.item?.salePrice || 1)}đ
                                                 </span>
-                                            }
-                                        />
+                                                <del className={cx('origin-price')}>
+                                                    {FormatPrice(cartItem.item?.originalPrice || 1)}
+                                                    đ
+                                                </del>
+                                            </p>
+                                        </div>
+                                        <div className={cx('col-3')}>
+                                            <div className={cx('form-wrapper')}>
+                                                <span className={cx('btn-decrease', 'btn')}>
+                                                    <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/decrease.svg" />
+                                                </span>
+                                                <input
+                                                    type="tel"
+                                                    value={cartItem.quantity}
+                                                    onChange={() => {
+                                                        console.log(1);
+                                                    }}
+                                                    className={cx('input')}
+                                                />
+                                                <span className={cx('btn-increase', 'btn')}>
+                                                    <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/increase.svg" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className={cx('col-4')}>
+                                            <span className={cx('product-price')}>
+                                                {FormatPrice(cartItem.item?.salePrice || 1)}đ
+                                            </span>
+                                        </div>
+                                        <div className={cx('col-5')}>
+                                            <span className={cx('delete-wrapper')}>
+                                                <DeleteIcon className={cx('')} />
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={cx('col-2')}>
-                                    <p className={cx('product-prices')}>
-                                        <span className={cx('real')}>26.250.000 ₫</span>
-                                        <del className={cx('origin-price')}>33.990.000 ₫</del>
-                                    </p>
-                                </div>
-                                <div className={cx('col-3')}>
-                                    <div className={cx('form-wrapper')}>
-                                        <span className={cx('btn-decrease', 'btn')}>
-                                            <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/decrease.svg" />
-                                        </span>
-                                        <input type="tel" value={1} className={cx('input')} />
-                                        <span className={cx('btn-increase', 'btn')}>
-                                            <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/increase.svg" />
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={cx('col-4')}>
-                                    <span className={cx('product-price')}>26.250.000 ₫</span>
-                                </div>
-                                <div className={cx('col-5')}>
-                                    <span className={cx('delete-wrapper')}>
-                                        <DeleteIcon className={cx('')} />
-                                    </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className={cx('item-container')}>
-                    <div className={cx('item')}>
-                        <div className={cx('item-container')}>
-                            <div className={cx('row')}>
-                                <div className={cx('col-1')}>
-                                    <div className={cx('info-item')}>
-                                        <FormControlLabel
-                                            sx={{ fontSize: '1.2rem' }}
-                                            control={<Checkbox name="removeItem" />}
-                                            label={
-                                                <span className={cx('text')}>
-                                                    Apple iPhone 14 Pro Max 128GB Tím
-                                                </span>
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className={cx('col-2')}>
-                                    <p className={cx('product-prices')}>
-                                        <span className={cx('real')}>26.250.000 ₫</span>
-                                        <del className={cx('origin-price')}>33.990.000 ₫</del>
-                                    </p>
-                                </div>
-                                <div className={cx('col-3')}>
-                                    <div className={cx('form-wrapper')}>
-                                        <span className={cx('btn-decrease', 'btn')}>
-                                            <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/decrease.svg" />
-                                        </span>
-                                        <input type="tel" className={cx('input')} />
-                                        <span className={cx('btn-increase', 'btn')}>
-                                            <Image src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/increase.svg" />
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className={cx('col-4')}>
-                                    <span className={cx('product-price')}>26.250.000 ₫</span>
-                                </div>
-                                <div className={cx('col-5')}>
-                                    <span className={cx('delete-wrapper')}>
-                                        <DeleteIcon className={cx('')} />
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    );
+                })}
             </div>
             <div className={cx('content-right')}>
                 <div className={cx('container')}>

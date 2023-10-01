@@ -25,7 +25,7 @@ const productApi = {
             },
         };
     },
-    getProduct(params: number): Promise<ProductType> {
+    getProduct(params: number): Promise<productType> {
         return axiosClient.get(`products/${params}`);
     },
 };

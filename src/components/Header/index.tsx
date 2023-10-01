@@ -17,6 +17,7 @@ import ListMenuUserShortCut from '../ListUserShortCut';
 import Search from '../Search';
 import SearchMobile from '../SearchMobile';
 import style from './Header.module.scss';
+import TippyCart from '../TippyCart';
 export default function Header() {
     const cx = classNames.bind(style);
     const [isShowAuth, setIsShowAuth] = useState(false);
@@ -32,6 +33,7 @@ export default function Header() {
     const debounce = useDebounce(searchValue, 500);
     const location = useAppSelector((state) => state.location.value);
     const isMobile = useAppSelector((state) => state.agent.value);
+    const isShowTippyCart = useAppSelector((state) => state.cart.isShowTippyCart);
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
             if (e.target) {
@@ -198,6 +200,7 @@ export default function Header() {
                     }}
                 />
             )}
+            {isShowTippyCart && <TippyCart />}
         </header>
     );
 }

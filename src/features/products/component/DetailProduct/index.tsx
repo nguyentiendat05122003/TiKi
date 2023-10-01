@@ -5,15 +5,16 @@ import { useMatch } from 'react-router-dom';
 import { images } from '~/assets/image';
 import Image from '~/components/Image';
 import { Start } from '~/components/Svg';
-import { ProductType } from '~/types';
 import productApi from '../../api';
 import style from './DetailProduct.module.scss';
 import SlideProduct from '../SlideProduct';
-import { useAppSelector } from '~/hooks';
+import { useAppDispatch, useAppSelector } from '~/hooks';
 import { FormatLocationFull } from '~/utils/formatLocationFull';
 import Location from '~/features/Location';
 import { FormatPrice } from '~/utils/formatPrice';
 import { useSnackbar } from 'notistack';
+import { addToCart, hideTippy, showTippy } from '~/slices/cartSlice';
+import { productType } from '~/types/product';
 export default function DetailProduct() {
     const cx = classNames.bind(style);
     const [quantity, setQuantity] = useState(1);
@@ -22,8 +23,9 @@ export default function DetailProduct() {
     const match = useMatch({
         path: '/product/:id',
     });
-    const [product, setProduct] = useState<ProductType>();
+    const [product, setProduct] = useState<productType>();
     const [insuranceProduct, setInsuranceProduct] = useState(0);
+    const dispatch = useAppDispatch();
     const { enqueueSnackbar } = useSnackbar();
     useEffect(() => {
         const fetch = async () => {
@@ -49,6 +51,14 @@ export default function DetailProduct() {
     };
     const handleClickLocation = () => {
         setIsLocation(!isShowLocation);
+    };
+    const handleAddProductToCart = () => {
+        dispatch(showTippy());
+        dispatch(addToCart({ item: product, quantity }));
+        window.scroll(0, -10);
+        setTimeout(() => {
+            dispatch(hideTippy());
+        }, 9000);
     };
     return (
         <div className={cx('wrapper-container')}>
@@ -248,7 +258,12 @@ export default function DetailProduct() {
                                     {' '}
                                     Mua ngay
                                 </button>
-                                <button className={cx('btn-outline')}>Thêm vào giỏ</button>
+                                <button
+                                    onClick={handleAddProductToCart}
+                                    className={cx('btn-outline')}
+                                >
+                                    Thêm vào giỏ
+                                </button>
                             </div>
                         </div>
                     </div>
