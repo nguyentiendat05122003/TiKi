@@ -27,6 +27,7 @@
         -webkit-box-align: center;
         align-items: center;
         margin: 0px -15px;
+        height: 100%;
     }
     .col-1{
         width: 398px;
@@ -67,6 +68,7 @@
     .col-3{
         width: 130px;
         padding: 0px 15px;
+        margin-top: 10px;
         .form-wrapper{
             display: inline-flex;
             flex-wrap: nowrap;
@@ -170,8 +172,10 @@
         flex-wrap: nowrap;
         -webkit-box-pack: justify;
         justify-content: space-between;
-        margin-bottom: 10px;
+        align-items: center;
+         margin-bottom: 10px;
         font-size: 1.4rem;
+        height: 100%;
     }
     .prices-text{
         font-weight: 300;

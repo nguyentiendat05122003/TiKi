@@ -9,7 +9,7 @@ interface CartState {
 
 const initialState = {
     isShowTippyCart: false,
-    listCart: [],
+    listCart: JSON.parse(localStorage.getItem('listCart') || '[]') || [],
 } as CartState;
 
 const cartSlice = createSlice({
@@ -24,6 +24,7 @@ const cartSlice = createSlice({
         },
         addToCart(state, action: PayloadAction<itemInCartType>) {
             state.listCart = [...state.listCart, { ...action.payload }];
+            localStorage.setItem('listCart', JSON.stringify(state.listCart));
         },
         setQuantity(state, action: PayloadAction<{ newQuantity: number; id: number }>) {
             const newListCart = state.listCart.map((cartItem) => {
@@ -33,9 +34,11 @@ const cartSlice = createSlice({
                 return { ...cartItem };
             });
             state.listCart = [...newListCart];
+            localStorage.setItem('listCart', JSON.stringify(state.listCart));
         },
         removeCartItem(state, action: PayloadAction<number>) {
             state.listCart = state.listCart.filter((item) => item.item?.id !== action.payload);
+            localStorage.setItem('listCart', JSON.stringify(state.listCart));
         },
     },
 });

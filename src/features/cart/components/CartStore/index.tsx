@@ -1,11 +1,11 @@
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
 import style from './CartStore.module.scss';
 import classNames from 'classnames/bind';
 import { DeleteIcon } from '~/components/Svg';
 import Image from '~/components/Image';
 import { itemInCartType } from '~/types/cart';
 import { FormatPrice } from '~/utils/formatPrice';
-import { useAppDispatch } from '~/hooks';
+import { useAppDispatch, useAppSelector } from '~/hooks';
 import { removeCartItem, setQuantity } from '~/slices/cartSlice';
 import { ChangeEvent, KeyboardEvent, SyntheticEvent, useRef, useState } from 'react';
 
@@ -15,15 +15,14 @@ export interface CartStoreProps {
 export default function CartStore({ data }: CartStoreProps) {
     const cx = classNames.bind(style);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [checkedAll, setCheckedAll] = useState(false);
+    const listCart = useAppSelector((state) => state.cart.listCart);
     const selectAllElement = useRef<HTMLInputElement | null>(null);
     const dispatch = useAppDispatch();
-    const listCheckbox = document.querySelectorAll("input[name='cb-select']");
+    let listCheckbox = document.querySelectorAll("input[name='cb-select']");
     const handleRemoveItem = (id: number) => {
         dispatch(removeCartItem(id));
     };
     const handleIncreaseQuantity = (id: number, quantity: number, cartItem: itemInCartType) => {
-        dispatch(setQuantity({ newQuantity: quantity + 1, id }));
         [...listCheckbox].map((item) => {
             const element = item as HTMLInputElement;
             if (element?.checked && element.tabIndex === id) {
@@ -34,10 +33,10 @@ export default function CartStore({ data }: CartStoreProps) {
                 return;
             }
         });
+        dispatch(setQuantity({ newQuantity: quantity + 1, id }));
     };
     const handleDecreaseQuantity = (id: number, quantity: number, cartItem: itemInCartType) => {
         if (quantity <= 1) {
-            dispatch(setQuantity({ newQuantity: 1, id }));
             return;
         }
         dispatch(setQuantity({ newQuantity: quantity - 1, id }));
@@ -69,6 +68,7 @@ export default function CartStore({ data }: CartStoreProps) {
         }
     };
     const handleCheckPayment = (e: SyntheticEvent, cartItem: itemInCartType) => {
+        listCheckbox = document.querySelectorAll("input[name='cb-select']");
         const element = e.target as HTMLInputElement;
         if (element.checked) {
             setTotalPrice((prev) => {
@@ -79,20 +79,27 @@ export default function CartStore({ data }: CartStoreProps) {
                 return prev - (cartItem.item?.salePrice || 1) * cartItem.quantity;
             });
         }
-    };
-    const handleSelectAllStore = () => {
         if (selectAllElement.current) {
-            // if (selectAllElement.current.checked) {
-            //     const a = [...listCheckbox][0] as HTMLInputElement;
-            //     a.checked = true;
-            // } else {
-            //     [...listCheckbox].forEach((item) => {
-            //         const element = item as HTMLInputElement;
-            //         element.checked = false;
-            //         // item.removeAttribute('checked');
-            //     });
-            // }
-            // setCheckedAll(selectAllElement.current.checked);
+            selectAllElement.current.checked =
+                document.querySelectorAll("input[name='cb-select']:checked").length ===
+                listCheckbox.length;
+        }
+    };
+    const handleSelectAllStore = (e: SyntheticEvent) => {
+        const cbAll = e.target as HTMLInputElement;
+        listCheckbox = document.querySelectorAll("input[name='cb-select']");
+        [...listCheckbox].forEach((item) => {
+            const element = item as HTMLInputElement;
+            element.checked = cbAll.checked;
+        });
+        if (cbAll.checked) {
+            const tmp = listCart.reduce((result, cur) => {
+                const salePrice = cur.item?.salePrice || 1;
+                return result + salePrice * cur.quantity;
+            }, 0);
+            setTotalPrice(tmp);
+        } else {
+            setTotalPrice(0);
         }
     };
     return (
@@ -102,11 +109,12 @@ export default function CartStore({ data }: CartStoreProps) {
                     <div className={cx('heading-label')}>
                         <FormControlLabel
                             sx={{ fontSize: '1.2rem' }}
-                            control={<Checkbox checked={checkedAll} name="select-all" />}
+                            control={
+                                <input ref={selectAllElement} type="checkbox" name="select-all" />
+                            }
                             label={
                                 <span className={cx('text')}>Tất cả ({data.length} sản phẩm)</span>
                             }
-                            inputRef={selectAllElement}
                             onChange={handleSelectAllStore}
                         />
                     </div>
@@ -128,7 +136,8 @@ export default function CartStore({ data }: CartStoreProps) {
                                                 <FormControlLabel
                                                     sx={{ fontSize: '1.2rem' }}
                                                     control={
-                                                        <Checkbox
+                                                        <input
+                                                            type="checkbox"
                                                             className={`cb-item`}
                                                             name="cb-select"
                                                             tabIndex={cartItem.item?.id}
@@ -235,7 +244,9 @@ export default function CartStore({ data }: CartStoreProps) {
                     <div className={cx('price-total')}>
                         <span className={cx('prices-text')}>Tổng tiền</span>
                         <div className={cx('prices-content')}>
-                            <div className={cx('price-value')}>Vui lòng chọn sản phẩm</div>
+                            <div className={cx('price-value')}>
+                                {FormatPrice(totalPrice) || 'Vui lòng chọn sản phẩm'}
+                            </div>
                             <span className={cx('prices-value-noted')}>
                                 (Đã bao gồm VAT nếu có)
                             </span>

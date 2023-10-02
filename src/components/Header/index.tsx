@@ -34,6 +34,7 @@ export default function Header() {
     const location = useAppSelector((state) => state.location.value);
     const isMobile = useAppSelector((state) => state.agent.value);
     const isShowTippyCart = useAppSelector((state) => state.cart.isShowTippyCart);
+    const listCartItem = useAppSelector((state) => state.cart.listCart);
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
             if (e.target) {
@@ -148,7 +149,9 @@ export default function Header() {
                                     <div className={cx('cart-container')}>
                                         <div className={cx('cart-content')}>
                                             <Image src={images.cart} className={cx('cart-img')} />
-                                            <div className={cx('cart-quantity')}>0</div>
+                                            <div className={cx('cart-quantity')}>
+                                                {listCartItem.length}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
