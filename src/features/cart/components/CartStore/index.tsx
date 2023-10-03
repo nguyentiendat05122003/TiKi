@@ -92,8 +92,9 @@ export default function CartStore({ data }: CartStoreProps) {
             const element = item as HTMLInputElement;
             element.checked = cbAll.checked;
         });
-        if (cbAll.checked) {
-            const tmp = listCart.reduce((result, cur) => {
+        if (cbAll.checked && listCart.length >= 1) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const tmp = listCart.reduce((result: any, cur: any) => {
                 const salePrice = cur.item?.salePrice || 1;
                 return result + salePrice * cur.quantity;
             }, 0);

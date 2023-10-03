@@ -328,16 +328,15 @@ export const FILTERS = [
     },
     {
         id: 1,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        title: (filters: filterParamsType) => 'Có khuyến mãi',
-        isActive: (filters: filterParamsType) => true,
+        title: (_filters: filterParamsType) => 'Có khuyến mãi',
+        isActive: (_filters: filterParamsType) => true,
         isVisible: (filters: filterParamsType) => filters.isPromotion,
         isRemove: true,
         isToggle: false,
         onRemove: (filters: filterParamsType) => {
             return { ...filters, isPromotion: !filters.isPromotion };
         },
-        onToggle: (filters: filterParamsType) => {
+        onToggle: (_filters: filterParamsType) => {
             return;
         },
     },
@@ -354,7 +353,7 @@ export const FILTERS = [
                 )}`;
             }
         },
-        isActive: (filters: filterParamsType) => true,
+        isActive: (_filters: filterParamsType) => true,
         isVisible: (filters: filterParamsType) => filters.salePrice_gte || filters.salePrice_lte,
         isRemove: true,
         isToggle: false,
@@ -363,7 +362,7 @@ export const FILTERS = [
             delete filters.salePrice_lte;
             return { ...filters };
         },
-        onToggle: (filters: filterParamsType) => {
+        onToggle: (_filters: filterParamsType) => {
             return;
         },
     },
@@ -375,7 +374,7 @@ export const FILTERS = [
             );
             return category[0].name || 'test';
         },
-        isActive: (filters: filterParamsType) => true,
+        isActive: (_filters: filterParamsType) => true,
         isVisible: (filters: filterParamsType) => filters['category.id'],
         isRemove: true,
         isToggle: false,
@@ -383,7 +382,7 @@ export const FILTERS = [
             delete filters['category.id'];
             return { ...filters };
         },
-        onToggle: (filters: filterParamsType) => {
+        onToggle: (_filters: filterParamsType) => {
             return;
         },
     },

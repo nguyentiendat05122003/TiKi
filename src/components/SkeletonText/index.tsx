@@ -6,8 +6,14 @@ export interface SkeletonProps {
 export default function SkeletonText({ numItem }: SkeletonProps) {
     return (
         <div>
-            {[...Array(numItem)].map((item, idx) => {
-                return <Skeleton variant="text" key={idx} sx={{ fontSize: '1rem', width: '100%', height: '28px' }} />;
+            {[...Array(numItem)].map((_item, idx) => {
+                return (
+                    <Skeleton
+                        variant="text"
+                        key={idx}
+                        sx={{ fontSize: '1rem', width: '100%', height: '28px' }}
+                    />
+                );
             })}
         </div>
     );

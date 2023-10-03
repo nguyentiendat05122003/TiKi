@@ -8,13 +8,19 @@ export interface PaginationProps {
     page: number;
 }
 export default function PaginationRounded({ totalPage, onClickPage, page }: PaginationProps) {
-    const handleChangePage = (event: ChangeEvent<unknown>, value: number) => {
+    const handleChangePage = (_event: ChangeEvent<unknown>, value: number) => {
         onClickPage(value);
     };
     return (
         <div>
             <Stack spacing={2} style={{ margin: '77px 0px 16px' }}>
-                <Pagination page={page} onChange={handleChangePage} count={totalPage} color="primary" shape="rounded" />
+                <Pagination
+                    page={page}
+                    onChange={handleChangePage}
+                    count={totalPage}
+                    color="primary"
+                    shape="rounded"
+                />
             </Stack>
         </div>
     );

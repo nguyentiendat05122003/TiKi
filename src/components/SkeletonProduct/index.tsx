@@ -7,7 +7,7 @@ export default function SkeletonProduct({ lengthArr }: ISkeletonProductProps) {
     return (
         <>
             <Grid style={{ width: '100%', gap: '8px' }} container columns={{ xs: 10 }}>
-                {[...Array(lengthArr)].map((item, idx) => {
+                {[...Array(lengthArr)].map((_item, idx) => {
                     return (
                         <Grid style={{ minHeight: '282px' }} key={idx} item>
                             <Skeleton variant="rounded" width={200} height={282} />

@@ -7,7 +7,7 @@ import { forwardRef } from 'react';
 import { useAppSelector } from '~/hooks';
 export interface HeaderAccountMobileProps {}
 
-const HeaderAccountMobile = forwardRef<HTMLDivElement, HeaderAccountMobileProps>((props, ref) => {
+const HeaderAccountMobile = forwardRef<HTMLDivElement, HeaderAccountMobileProps>((_props, ref) => {
     const cx = classNames.bind(style);
     const user = useAppSelector((state) => state.user.currentUser?.user);
     const navSubList = [
@@ -23,7 +23,9 @@ const HeaderAccountMobile = forwardRef<HTMLDivElement, HeaderAccountMobileProps>
                         <AvatarDefault className={cx('avatar-img')} />
                         <div className={cx('content')}>
                             <div className={cx('name')}>{user ? user.username : 'Đăng nhập'}</div>
-                            <div className={cx('email')}>{user ? user.email : 'Nhận nhiều ưu đãi hơn'}</div>
+                            <div className={cx('email')}>
+                                {user ? user.email : 'Nhận nhiều ưu đãi hơn'}
+                            </div>
                         </div>
                         <ArrowRight className={cx('icon-right')} />
                     </Link>

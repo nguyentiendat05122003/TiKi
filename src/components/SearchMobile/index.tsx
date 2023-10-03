@@ -19,7 +19,9 @@ export default function SearchMobile({ onClick }: SearchMobileProps) {
     const accountContainerRef = useRef<HTMLDivElement>(null);
     const [isShowAccountMobile, setIsShowAccountMobile] = useState(false);
     const [numberItemShow, setNumberItemShow] = useState(3);
-    const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>([]);
+    const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>(
+        [],
+    );
     const [trendSuggestList, setTrendSuggestList] = useState<SuggestSearchType[]>([]);
     const [categoryList, setCategoryList] = useState<SuggestSearchType[]>([]);
     const handleShowMore = () => {
@@ -80,7 +82,7 @@ export default function SearchMobile({ onClick }: SearchMobileProps) {
                     <span></span>
                 </button>
                 <div className={cx('search-wrapper')}>
-                    <SearchSvg />
+                    <SearchSvg className="" />
                     <input placeholder="Bạn đang tìm kiếm" type="text" className={cx('input')} />
                 </div>
                 <div className={cx('cart-wrapper')}>
@@ -93,8 +95,15 @@ export default function SearchMobile({ onClick }: SearchMobileProps) {
                 <div className={cx('suggest-list')}>
                     {searchSuggestList.slice(0, numberItemShow).map((item) => {
                         return (
-                            <Link key={item.id} className={cx('item-link')} to={`products/${item.id}` || item.to}>
-                                <Image src={item.thumbnail || images.search2} className={cx('link-img')} />
+                            <Link
+                                key={item.id}
+                                className={cx('item-link')}
+                                to={`products/${item.id}` || item.to}
+                            >
+                                <Image
+                                    src={item.thumbnail || images.search2}
+                                    className={cx('link-img')}
+                                />
                                 <div className={cx('item-text')}>{item.name}</div>
                             </Link>
                         );
@@ -125,7 +134,10 @@ export default function SearchMobile({ onClick }: SearchMobileProps) {
                             {trendSuggestList.map((item) => {
                                 return (
                                     <Link key={item.id} className={cx('link')} to={item.to}>
-                                        <Image src={item.thumbnail || images.noImage} className={cx('trend-img')} />
+                                        <Image
+                                            src={item.thumbnail || images.noImage}
+                                            className={cx('trend-img')}
+                                        />
                                         <span className={cx('title')}>{item.name}</span>
                                     </Link>
                                 );
@@ -142,7 +154,10 @@ export default function SearchMobile({ onClick }: SearchMobileProps) {
                                     <div className={cx('thumb')}>
                                         <div className={cx('thumb-wrapper')}>
                                             {' '}
-                                            <Image src={item.thumbnail || images.noImage} className={cx('image')} />
+                                            <Image
+                                                src={item.thumbnail || images.noImage}
+                                                className={cx('image')}
+                                            />
                                         </div>
                                     </div>
                                     <span className={cx('title')}>{item.name}</span>
