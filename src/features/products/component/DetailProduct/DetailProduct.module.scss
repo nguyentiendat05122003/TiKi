@@ -135,19 +135,21 @@
         color: rgb(39, 39, 42);
     }
 }
-.info-transport{
+.item{
     display: flex;
     flex-direction: column;
     background: white;
     border-radius: 8px;
     padding: 16px;
     gap: 4px;
-    .heading{
-        font-weight: 600;
-        font-size: 1.6rem;
-        line-height: 150%;
-        color: rgb(39, 39, 42);
-    }
+}
+.heading{
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 150%;
+    color: rgb(39, 39, 42);
+}
+.info-transport{
     .location-wrapper{
         display: flex;
         flex-direction: row;
@@ -225,15 +227,10 @@
     .logo{
         width: 32px;
         height: 16px;
+        margin-right: 8px;
     }
     .logo-img{
         width: 100%;
-    }
-    .heading{
-        font-size: 1.4rem;
-        line-height: 150%;
-        color: rgb(39, 39, 42);
-        margin-left: 8px;
     }
     .info-detail{
         display: flex;
@@ -243,66 +240,54 @@
     }
 }
 .insurance{
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border-radius: 8px;
-    padding: 16px;
-    gap: 4px;
-}
-.heading{
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-    color: rgb(39, 39, 42);
-}
-.insurance-content{
-    display: flex;
-    flex-direction: row;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 8px 0px;
-    border-bottom: 1px solid rgb(235, 235, 240);
-    font-size: 14px;
-    line-height: 150%;
-    font-weight: 400;
-    color: rgb(39, 39, 42);
-    gap: 8px;
-}
-.content{
-    display: flex;
-    flex: 1 1 0%;
-    -webkit-box-align: center;
-    align-items: center;
-}
-.info{
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 0%;
-    gap: 4px
-}
-.name{
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    font-size: 14px;
-    line-height: 150%;
-    font-weight: 500;
-    gap: 4px;
-    color: rgb(39, 39, 42);
-}
-.img-insurance-wrapper{
-    object-fit: contain;
-    margin-right: 8px;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    
-}
-.img-insurance{
-    border-radius: 8px;
-    width: 100%;
-    height: 100%;
+    .insurance-content{
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 8px 0px;
+        border-bottom: 1px solid rgb(235, 235, 240);
+        font-size: 14px;
+        line-height: 150%;
+        font-weight: 400;
+        color: rgb(39, 39, 42);
+        gap: 8px;
+    }
+    .content{
+        display: flex;
+        flex: 1 1 0%;
+        -webkit-box-align: center;
+        align-items: center;
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0%;
+        gap: 4px
+    }
+    .name{
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        font-size: 14px;
+        line-height: 150%;
+        font-weight: 500;
+        gap: 4px;
+        color: rgb(39, 39, 42);
+    }
+    .img-insurance-wrapper{
+        object-fit: contain;
+        margin-right: 8px;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        
+    }
+    .img-insurance{
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+    }
 }
 .img-shock{
     width: 100%;
@@ -458,5 +443,35 @@
         color: rgb(10, 104, 255);
         border: 1px solid rgb(10, 104, 255);
         border-radius: 4px;
+    }
+}
+
+.info-insurance{
+    .items{
+
+    }
+    .item{
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 8px 0px;
+        border-bottom: 1px solid rgb(235, 235, 240);
+        font-size: 1.4rem;
+        line-height: 150%;
+        font-weight: 400;
+        color: rgb(39, 39, 42);
+        gap: 8px;
+        span{
+            font-weight: 400;
+        }
+    }
+    .text-strong{
+        color: rgb(39, 39, 42);
+        cursor: initial;
+        font-weight: 500;
+    }
+    .link{
+        color: rgb(10, 104, 255);
     }
 }

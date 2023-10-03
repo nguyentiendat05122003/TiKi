@@ -76,6 +76,9 @@ export default function Product() {
         });
     };
     const handleIncreasePage = () => {
+        if (Math.ceil(responsePagination.total / responsePagination.limit) === queryParams._page) {
+            return;
+        }
         navigate({
             pathname: location.pathname,
             search: queryString.stringify({ ...queryParams, _page: queryParams._page + 1 }),

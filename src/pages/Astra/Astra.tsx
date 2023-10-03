@@ -89,28 +89,28 @@ export default function Astra() {
                                             className={cx('item-img')}
                                             src="https://salt.tikicdn.com/ts/ta/2f/4d/05/cf126b3eb6bbc249f3c94af8b0356757.png"
                                         />
-                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                        <span className={cx('text')}>Miễn phí giao hàng 100%</span>
                                     </div>
                                     <div className={cx('item')}>
                                         <Image
                                             className={cx('item-img')}
                                             src="https://salt.tikicdn.com/ts/ta/51/27/1d/c8deefc3b4da02dfb50f9f08b1ecadc9.png"
                                         />
-                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                        <span className={cx('text')}>Heo vàng Astra</span>
                                     </div>
                                     <div className={cx('item')}>
                                         <Image
                                             className={cx('item-img')}
                                             src="https://salt.tikicdn.com/ts/ta/b0/a0/78/5a660899c4f1857be1721beb1ff0fa7d.png"
                                         />
-                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                        <span className={cx('text')}>Giảm giá đơn bằng ASA</span>
                                     </div>
                                     <div className={cx('item')}>
                                         <Image
                                             className={cx('item-img')}
                                             src="https://salt.tikicdn.com/ts/ta/2f/4d/05/cf126b3eb6bbc249f3c94af8b0356757.png"
                                         />
-                                        <span className={cx('text')}>Nhà bán hoàn ASA</span>
+                                        <span className={cx('text')}>Đổi trả 365 ngày</span>
                                     </div>
                                 </div>
                             </div>
@@ -140,10 +140,10 @@ export default function Astra() {
                                             />
                                         </div>
                                         <div className={cx('introItem-text')}>
-                                            <p className={cx('sub-title')}>Điểm thưởng mua sắm</p>
+                                            <p className={cx('sub-title')}>Có thể sinh lời</p>
                                             <div className={cx('desc')}>
-                                                Hoàn điểm thưởng ASA khi mua hàng, mức hoàn tuỳ gói
-                                                hội viên.
+                                                Giá trị ASA giao động theo thị trường có thể sinh
+                                                lời & dùng gửi tiết kiệm Heo vàng Astra
                                             </div>
                                         </div>
                                     </div>
@@ -155,10 +155,9 @@ export default function Astra() {
                                             />
                                         </div>
                                         <div className={cx('introItem-text')}>
-                                            <p className={cx('sub-title')}>Điểm thưởng mua sắm</p>
+                                            <p className={cx('sub-title')}>Dùng ASA đổi giảm giá</p>
                                             <div className={cx('desc')}>
-                                                Hoàn điểm thưởng ASA khi mua hàng, mức hoàn tuỳ gói
-                                                hội viên.
+                                                Dùng điểm ASA để giảm giá đơn hàng, đổi sang TikiXu
                                             </div>
                                         </div>
                                     </div>

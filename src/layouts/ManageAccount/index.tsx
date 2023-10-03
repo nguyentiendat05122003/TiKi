@@ -18,6 +18,7 @@ export interface AccountEditProps {
 export default function ManageAccount({ children }: AccountEditProps) {
     const cx = classNames.bind(style);
     const isLogin = useAppSelector((state) => state.user.currentUser?.jwt);
+    const user = useAppSelector((state) => state.user.currentUser?.user);
     const [isShowLogin, setIsShowLogin] = useState(!!isLogin);
     return (
         <>
@@ -46,7 +47,7 @@ export default function ManageAccount({ children }: AccountEditProps) {
                                 <Image src={images.accountAvatarDefault} className={cx('avatar')} />
                                 <div className={cx('info')}>
                                     Tài khoản của
-                                    <strong>Đạt Nguyễn Tiến</strong>
+                                    <strong className={cx('name-user')}>{user.email}</strong>
                                 </div>
                             </div>
                             <ul className={cx('list-item')}>

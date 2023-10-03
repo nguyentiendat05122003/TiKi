@@ -38,6 +38,16 @@ import sliderProduct7 from '~/assets/image/sliderProduct7.webp';
 import sliderProduct8 from '~/assets/image/sliderProduct8.webp';
 import sliderProduct9 from '~/assets/image/sliderProduct9.webp';
 import sliderProduct10 from '~/assets/image/sliderProduct10.webp';
+import sliderProductMini1 from '~/assets/image/sliderProductMini1.webp';
+import sliderProductMini2 from '~/assets/image/sliderProductMini2.webp';
+import sliderProductMini3 from '~/assets/image/sliderProductMini3.webp';
+import sliderProductMini4 from '~/assets/image/sliderProductMini4.webp';
+import sliderProductMini5 from '~/assets/image/sliderProductMini5.webp';
+import sliderProductMini6 from '~/assets/image/sliderProductMini6.webp';
+import sliderProductMini7 from '~/assets/image/sliderProductMini7.webp';
+import sliderProductMini8 from '~/assets/image/sliderProductMini8.webp';
+import sliderProductMini9 from '~/assets/image/sliderProductMini9.webp';
+import sliderProductMini10 from '~/assets/image/sliderProductMini10.webp';
 
 import { SuggestSearchType } from '~/types';
 import {
@@ -50,7 +60,6 @@ import {
     PersonIcon,
 } from '~/components/Svg';
 import { images } from '~/assets/image';
-import categoryApi from '~/features/products/api/categoryApi';
 
 export const HEADER_SEARCH = [
     'Bạn tìm gì hôm nay',
@@ -70,6 +79,18 @@ export const LIST_SLIDER_PRODUCT = [
     sliderProduct8,
     sliderProduct9,
     sliderProduct10,
+];
+export const LIST_SLIDER_PRODUCT_MINI = [
+    sliderProductMini1,
+    sliderProductMini2,
+    sliderProductMini3,
+    sliderProductMini4,
+    sliderProductMini5,
+    sliderProductMini6,
+    sliderProductMini7,
+    sliderProductMini8,
+    sliderProductMini9,
+    sliderProductMini10,
 ];
 export const LIST_MENU_SHORT_USER = [
     {

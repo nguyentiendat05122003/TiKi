@@ -16,7 +16,9 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
     const cx = classNames.bind(style);
     const [isShowMore, setIsShowMore] = useState(true);
     const [numberItemShow, setNumberItemShow] = useState(3);
-    const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>([]);
+    const [searchSuggestList, setSearchSuggestList] = useState<SuggestSearchType[] | ProductType[]>(
+        [],
+    );
     const [trendSuggestList, setTrendSuggestList] = useState<SuggestSearchType[]>([]);
     const [categoryList, setCategoryList] = useState<SuggestSearchType[]>([]);
     const isMobile = useAppSelector((state) => state.agent.value);
@@ -46,8 +48,11 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
                 <div className={cx('suggest-list')}>
                     {searchSuggestList.slice(0, numberItemShow).map((item) => {
                         return (
-                            <Link key={item.id} className={cx('item-link')} to={`products/${item.id}` || item.to}>
-                                <Image src={item.thumbnail || images.search2} className={cx('link-img')} />
+                            <Link key={item.id} className={cx('item-link')} to="/">
+                                <Image
+                                    src={item.thumbnail || images.search2}
+                                    className={cx('link-img')}
+                                />
                                 <div className={cx('item-text')}>{item.name}</div>
                             </Link>
                         );
@@ -78,7 +83,10 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
                             {trendSuggestList.map((item) => {
                                 return (
                                     <Link key={item.id} className={cx('link')} to={item.to}>
-                                        <Image src={item.thumbnail || images.noImage} className={cx('trend-img')} />
+                                        <Image
+                                            src={item.thumbnail || images.noImage}
+                                            className={cx('trend-img')}
+                                        />
                                         <span className={cx('title')}>{item.name}</span>
                                     </Link>
                                 );
@@ -95,7 +103,10 @@ const HistorySearch = forwardRef<HTMLDivElement, HistorySearchProps>(({ data }, 
                                     <div className={cx('thumb')}>
                                         <div className={cx('thumb-wrapper')}>
                                             {' '}
-                                            <Image src={item.thumbnail || images.noImage} className={cx('image')} />
+                                            <Image
+                                                src={item.thumbnail || images.noImage}
+                                                className={cx('image')}
+                                            />
                                         </div>
                                     </div>
                                     <span className={cx('title')}>{item.name}</span>

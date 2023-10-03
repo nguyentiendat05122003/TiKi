@@ -22,3 +22,19 @@
 input[type='checkbox'] { 
     margin-right: 10px;
  }
+
+.sub-title{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 20px 0;
+    h4{
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0px;
+        color: rgb(0, 0, 0);
+        line-height: 28px;
+        text-transform: uppercase;
+        flex-basis: calc(797px);
+    }
+}

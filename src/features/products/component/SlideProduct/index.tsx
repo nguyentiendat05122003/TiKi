@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { useRef } from 'react';
 import { type Swiper as SwiperRef } from 'swiper';
-import { LIST_SLIDER_PRODUCT } from '~/constants';
+import { LIST_SLIDER_PRODUCT, LIST_SLIDER_PRODUCT_MINI } from '~/constants';
 import { Arrow } from '~/components/Svg';
 export default function SlideProduct() {
     const cx = classNames.bind(style);
@@ -56,7 +56,7 @@ export default function SlideProduct() {
                         freeMode={true}
                         modules={[FreeMode, Navigation, Thumbs]}
                     >
-                        {LIST_SLIDER_PRODUCT.map((item, idx) => {
+                        {LIST_SLIDER_PRODUCT_MINI.map((item, idx) => {
                             return (
                                 <SwiperSlide key={idx} className={cx('slide-wrapper')}>
                                     <div className={cx('slide')}>

@@ -5,6 +5,7 @@ import { Start } from '~/components/Svg';
 import { productType } from '~/types/product';
 import Image from '~/components/Image';
 import { FormatPrice } from '~/utils/formatPrice';
+import thumbnailProduct from '~/assets/image/sliderProduct1.webp';
 interface ProductItemProps {
     item: productType;
 }
@@ -15,13 +16,7 @@ export default function ProductItem({ item }: ProductItemProps) {
             <span style={{ flexDirection: 'column' }}>
                 <div className={cx('thumbnail')}>
                     <div className={cx('img-wrapper')}>
-                        <Image
-                            className={cx('img')}
-                            src={
-                                item.thumbnail ||
-                                'https://salt.tikicdn.com/cache/280x280/ts/product/3b/ea/0d/02608a94dd537b464db6e04bde396a75.png.webp'
-                            }
-                        />
+                        <Image className={cx('img')} src={item.thumbnail || thumbnailProduct} />
                     </div>
                 </div>
                 <div className={cx('info-wrapper')}>

@@ -103,7 +103,7 @@ export default function DetailProduct() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={cx('info-transport')}>
+                            <div className={cx('info-transport', 'item')}>
                                 <div className={cx('heading')}>Thông tin vận chuyển</div>
                                 <div className={cx('location-wrapper')}>
                                     <div className={cx('location')}>
@@ -176,7 +176,7 @@ export default function DetailProduct() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={cx('insurance')}>
+                            <div className={cx('insurance', 'item')}>
                                 <div className={cx('heading')}>Dịch vụ bổ sung</div>
                                 <div className={cx('insurance-content')}>
                                     <div className={cx('img-insurance-wrapper')}>
@@ -205,13 +205,32 @@ export default function DetailProduct() {
                                     </div>
                                 </div>
                             </div>
+                            <div className={cx('item', 'info-insurance')}>
+                                <div className={cx('heading')}>Thông tin bảo hành</div>
+                                <div className={cx('item')}>
+                                    <span>Thời gian bảo hành:</span>
+                                    <div className={cx('text-strong')}>12 Tháng</div>
+                                </div>
+                                <div className={cx('item')}>
+                                    <span>Hình thức bảo hành:</span>
+                                    <div className={cx('text-strong')}>Hóa đơn</div>
+                                </div>
+                                <div className={cx('item')}>
+                                    <span>Nơi bảo hành:</span>
+                                    <div className={cx('text-strong')}>Bảo hành chính hãng</div>
+                                </div>
+                                <div className={cx('item')}>
+                                    <span>Hướng dẫn bảo hành:</span>
+                                    <div className={cx('text-strong', 'link')}>Xem chi tiết</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className={cx('place-product')}>
                     <div className={cx('wrapper')}>
                         <div className={cx('container')}>
-                            <div className={cx('name-product')}>iPhone 14</div>
+                            <div className={cx('name-product')}>{product?.name}</div>
                         </div>
                         <div className={cx('add-to-cart')}>
                             <div className={cx('quantity')}>
@@ -226,7 +245,7 @@ export default function DetailProduct() {
                                     <input
                                         value={quantity}
                                         className={cx('input-quantity')}
-                                        type="number"
+                                        type=""
                                         readOnly
                                     />
                                     <button

@@ -9,18 +9,22 @@ export default function Cart() {
     const isLogin = useAppSelector((state) => state.user.currentUser?.jwt);
     return (
         <div>
-            <div className={cx('container')}>
-                <div className={cx('title')}>
-                    <h4>Giỏ Hàng</h4>
+            {isLogin ? (
+                <div className={cx('container')}>
+                    <div className={cx('title')}>
+                        <h4>Giỏ Hàng</h4>
+                    </div>
+                    <div className={cx('content')}>
+                        {listCartItem.length >= 1 ? (
+                            <CartStore data={listCartItem} />
+                        ) : (
+                            <CartEmpty />
+                        )}
+                    </div>
                 </div>
-                <div className={cx('content')}>
-                    {listCartItem.length >= 1 && isLogin ? (
-                        <CartStore data={listCartItem} />
-                    ) : (
-                        <CartEmpty />
-                    )}
-                </div>
-            </div>
+            ) : (
+                <></>
+            )}
         </div>
     );
 }

@@ -117,7 +117,19 @@
 .container{
     flex: 1 1 0%;
 }
-
+.name-user{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    white-space: break-spaces;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: rgb(39, 39, 42);
+    margin: 0px;
+    word-break: break-word;
+}
 .require-login{
     p{
         font-size: 1.6rem;
@@ -135,7 +147,7 @@
         text-align: center;
         font-weight: 500;
         border: 1px solid transparent;
-        font-size: 14px;
+        font-size: 1.4rem;
         border-radius: 4px;
     }
 }

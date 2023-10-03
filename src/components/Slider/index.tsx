@@ -36,12 +36,6 @@ export default function Slider() {
                             prevEl: navigationPrevRef.current,
                             nextEl: navigationNextRef.current,
                         }}
-                        onBeforeInit={(swiper) => {
-                            if (swiper.params.navigation) {
-                                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                                swiper.params.navigation.nextEl = navigationNextRef.current;
-                            }
-                        }}
                         onSlideChange={(swiper) => {
                             if (swiper.scrollbar && swiper.scrollbar.el) {
                                 swiper.scrollbar.el.style.display = 'none';
