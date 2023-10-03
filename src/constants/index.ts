@@ -314,12 +314,12 @@ export const FILTERS = [
     {
         id: 0,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        title: (filters: filterParamsType) => 'Giao hàng miễn phí',
+        title: (_filters: filterParamsType) => 'Giao hàng miễn phí',
         isActive: (filters: filterParamsType) => filters.isFreeShip,
-        isVisible: (filters: filterParamsType) => true,
+        isVisible: (_filters: filterParamsType) => true,
         isRemove: false,
         isToggle: true,
-        onRemove: (filters: filterParamsType) => {
+        onRemove: (_filters: filterParamsType) => {
             return;
         },
         onToggle: (filters: filterParamsType) => {

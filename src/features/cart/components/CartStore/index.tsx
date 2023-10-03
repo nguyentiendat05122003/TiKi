@@ -94,11 +94,12 @@ export default function CartStore({ data }: CartStoreProps) {
         });
         if (cbAll.checked && listCart.length >= 1) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const tmp = listCart.reduce((result: any, cur: any) => {
-                const salePrice = cur.item?.salePrice || 1;
-                return result + salePrice * cur.quantity;
-            }, 0);
-            setTotalPrice(tmp);
+            // const tmp = listCart.reduce((result: number, cur: itemInCartType) => {
+            //     const salePrice = cur.item?.salePrice || 1;
+            //     return result + salePrice * cur.quantity;
+            // }, 0);
+            // setTotalPrice(tmp);
+            setTotalPrice(0);
         } else {
             setTotalPrice(0);
         }
