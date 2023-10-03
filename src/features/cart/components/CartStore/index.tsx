@@ -93,13 +93,12 @@ export default function CartStore({ data }: CartStoreProps) {
             element.checked = cbAll.checked;
         });
         if (cbAll.checked && listCart.length >= 1) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            // const tmp = listCart.reduce((result: number, cur: itemInCartType) => {
-            //     const salePrice = cur.item?.salePrice || 1;
-            //     return result + salePrice * cur.quantity;
-            // }, 0);
-            // setTotalPrice(tmp);
-            setTotalPrice(0);
+            let total = 0;
+            listCart.forEach((cartItem) => {
+                const price = cartItem.item?.salePrice || 1;
+                total += price * cartItem.quantity;
+            });
+            setTotalPrice(total);
         } else {
             setTotalPrice(0);
         }
