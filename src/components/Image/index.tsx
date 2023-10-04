@@ -8,7 +8,12 @@ export interface ImagesProps {
     fallback?: string;
     [key: string]: any;
 }
-export default function Image({ src, alt = '', fallback: customFallback = images.noImage, ...props }: ImagesProps) {
+export default function Image({
+    src,
+    alt = '',
+    fallback: customFallback = images.noImage,
+    ...props
+}: ImagesProps) {
     const [fallback, setFallBack] = useState('');
     const handleError = () => {
         setFallBack(customFallback);

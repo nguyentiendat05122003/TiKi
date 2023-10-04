@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { Fragment } from 'react';
-import { statusLoginSelector, useAppSelector } from '~/hooks';
+import { useAppSelector } from '~/hooks';
 import { MenuShortCutType } from '~/types';
 import Button from '../Button';
 import Image from '../Image';
@@ -13,9 +13,13 @@ export interface ListMenuUserShortCutProps {
     classes: string;
 }
 
-export default function ListMenuUserShortCut({ classes, onClick, listData, onClickAuth }: ListMenuUserShortCutProps) {
-    const state = useAppSelector((state) => state);
-    const userLogin = statusLoginSelector(state);
+export default function ListMenuUserShortCut({
+    classes,
+    onClick,
+    listData,
+    onClickAuth,
+}: ListMenuUserShortCutProps) {
+    const userLogin = useAppSelector((state) => state.user.currentUser?.jwt);
     const cx = classNames.bind(style);
     const handleClick = (id: number) => {
         if (id === 2 && userLogin) return;
