@@ -1,0 +1,114 @@
+.wrapper{
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal;
+    color: rgb(128, 128, 137);
+    background-color: white;
+}
+.container{
+    padding: 16px 0px;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    width: 1270px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.block{
+    width: 268px;
+}
+.heading-block{
+    font-size: 1.6rem;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(56, 56, 61);
+    margin-bottom: 12px;
+    margin-top: 0px;
+}
+.hotline{
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    line-height: 16px;
+    color: rgb(128, 128, 137);
+    margin-bottom: 12px;
+    margin-top: 0px;
+    .phone-hotline{
+        color: rgb(56, 56, 61);
+        font-weight: 500;  
+    }
+}
+.link{
+    display: block;
+    margin-bottom: 8px;
+    color: rgb(128, 128, 137);
+    font-size: 1.2rem;
+}
+.image-wrapper{
+    width: 226px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    .image-real{
+        width: 32px;
+        height: 32px;
+    }
+    .subscribed{
+        width: 83px;
+        height: 32px;
+    }
+}
+.block-4{
+    .payment{
+        font-size: 1.2rem;
+        line-height: 16px;
+        color: rgb(128, 128, 137);
+        margin-bottom: 12px;
+        margin-top: 0px;
+    }
+    .icon{
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        vertical-align: middle;
+        width: 32px;
+        height: 32px;
+    }
+}
+.block-5{
+    .img-icon-wrapper{
+        font-size: 1.2rem;
+        line-height: 16px;
+        color: rgb(128, 128, 137);
+        margin-bottom: 12px;
+        margin-top: 0px;
+    }
+    .img-icon{
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        vertical-align: middle;
+        width: 32px;
+        height: 32px;
+    }
+    .image-app-wrapper{
+        width: 226px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+    .image-qr{
+        width: 80px;
+        height: 80px;
+    }
+    .img-installApp{
+        height: 36px;
+    }
+}
