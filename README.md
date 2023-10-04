@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+🚀 Deploy: https://tiki-zeta.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⚙️ Technologies:
+ReactJS
+TypeScript
+Sass
+JavaScript
 
-Currently, two official plugins are available:
+🕹️ Features:
+Login, register, logout
+Skeleton loading
+Cart
+Show and Filters products
+Location
+Responsive
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Home.
+![Getting Started](./src/assets/image/Home1.png)
+![Getting Started](./src/assets/image/Home2.png)
 
-## Expanding the ESLint configuration
+Login.
+![Getting Started](./src/assets/image/LoginPage.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Register.
+![Getting Started](./src/assets/image/Register.png)
 
-- Configure the top-level `parserOptions` property like this:
+Detail Product
+![Getting Started](./src/assets/image/DetailPage.png)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Cart.
+![Getting Started](./src/assets/image/CartPage.png)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Location
+![Getting Started](./src/assets/image/LocationPage.png)
