@@ -7,12 +7,12 @@ Sass
 JavaScript
 
 🕹️ Features:
-Login, register, logout
-Skeleton loading
-Cart
-Show and Filters products
-Location
-Responsive
+Login, register, logout.
+Skeleton loading.
+Cart.
+Show and Filters products.
+Location.
+Responsive.
 
 Home.
 ![Getting Started](./src/assets/image/Home1.png)
