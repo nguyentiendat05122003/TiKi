@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { images } from '~/assets/image';
-import { HEADER_LINKS } from '~/constants';
+import { HEADER_LINKS, outIndexList } from '~/constants';
 import Location from '~/features/Location';
 import Auth from '~/features/authentication';
 import productApi from '~/features/products/api';
@@ -144,7 +144,12 @@ export default function Header() {
                                 onClick={handleClick}
                                 listData={listMenuShortCut}
                             />
-                            <Link to="/cart">
+                            <Link
+                                onClick={() => {
+                                    dispatch(setStatus(outIndexList));
+                                }}
+                                to="/cart"
+                            >
                                 <div className={cx('cart-wrapper')}>
                                     <div className={cx('cart-container')}>
                                         <div className={cx('cart-content')}>

@@ -387,3 +387,5 @@ export const FILTERS = [
         },
     },
 ];
+
+export const outIndexList = 4;
