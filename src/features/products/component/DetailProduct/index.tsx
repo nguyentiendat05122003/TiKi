@@ -19,6 +19,7 @@ export default function DetailProduct() {
     const cx = classNames.bind(style);
     const [quantity, setQuantity] = useState(1);
     const location = useAppSelector((state) => state.location.value);
+    const isLogin = useAppSelector((state) => state.user.currentUser?.jwt);
     const [isShowLocation, setIsLocation] = useState(false);
     const match = useMatch({
         path: '/product/:id',
@@ -53,6 +54,14 @@ export default function DetailProduct() {
         setIsLocation(!isShowLocation);
     };
     const handleAddProductToCart = () => {
+        if (!isLogin) {
+            enqueueSnackbar('Vui lòng đăng nhập để trải nghiệm tốt hơn', {
+                autoHideDuration: 1000,
+                variant: 'error',
+                anchorOrigin: { vertical: 'top', horizontal: 'right' },
+            });
+            return;
+        }
         dispatch(showTippy());
         dispatch(addToCart({ item: product, quantity }));
         window.scroll(0, -10);
