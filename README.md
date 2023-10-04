@@ -1,18 +1,22 @@
-🚀 Deploy: https://tiki-zeta.vercel.app
+# 🚀 Deploy: https://tiki-zeta.vercel.app
 
-⚙️ Technologies:
+# ⚙️ Technologies:
+
 ReactJS
 TypeScript
 Sass
 JavaScript
 
-🕹️ Features:
-Login, register, logout.
-Skeleton loading.
-Cart.
-Show and Filters products.
-Location.
-Responsive.
+# 🕹️ Features:
+
+** Login, register, logout **
+** Skeleton loading **
+** Cart **
+** Show and Filters products **
+** Location **
+** Responsive **
+
+# UI
 
 Home.
 ![Getting Started](./src/assets/image/Home1.png)
