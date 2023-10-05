@@ -11,6 +11,7 @@ import { images } from '~/assets/image';
 import Auth from '~/features/authentication';
 import RequireLogin from '~/components/RequireLogin';
 import { useAppSelector } from '~/hooks';
+import Footer from '~/components/Footer';
 export interface AccountEditProps {
     children: ReactNode;
 }
@@ -22,7 +23,7 @@ export default function ManageAccount({ children }: AccountEditProps) {
     const [isShowLogin, setIsShowLogin] = useState(!!isLogin);
     return (
         <>
-            <div className="wrapper">
+            <div className={cx('wrapper')}>
                 <Header />
                 <FreeShip />
                 <div className={cx('content-wrapper')}>
@@ -69,6 +70,7 @@ export default function ManageAccount({ children }: AccountEditProps) {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
             {!isShowLogin && (
                 <Auth
