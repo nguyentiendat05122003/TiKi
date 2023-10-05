@@ -11,7 +11,7 @@ export interface HeaderOnlyProps {
 export function HeaderOnly({ children }: HeaderOnlyProps) {
     const cx = classnames.bind(style);
     return (
-        <div>
+        <div className={cx('main')}>
             <Header />
             <FreeShip />
             <div className={cx('content-wrapper')}>{children}</div>

@@ -1,3 +1,13 @@
 .content-wrapper{
     width: 1280px;
 }
+@media screen and (min-width:1281px) {  
+    .main{
+        background-color: #f5f5fa;
+    }
+    .content-wrapper{
+        width: 1280px;
+        display: flex;
+        margin: 0 auto;
+    }
+}
