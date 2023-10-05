@@ -8,6 +8,7 @@ import { FormatPrice } from '~/utils/formatPrice';
 import { useAppDispatch, useAppSelector } from '~/hooks';
 import { removeCartItem, setQuantity } from '~/slices/cartSlice';
 import { ChangeEvent, KeyboardEvent, SyntheticEvent, useRef, useState } from 'react';
+import { useSnackbar } from 'notistack';
 
 export interface CartStoreProps {
     data: itemInCartType[] | [];
@@ -17,6 +18,7 @@ export default function CartStore({ data }: CartStoreProps) {
     const [totalPrice, setTotalPrice] = useState(0);
     const listCart = useAppSelector((state) => state.cart.listCart);
     const selectAllElement = useRef<HTMLInputElement | null>(null);
+    const { enqueueSnackbar } = useSnackbar();
     const dispatch = useAppDispatch();
     let listCheckbox = document.querySelectorAll("input[name='cb-select']");
     const handleRemoveItem = (id: number) => {
@@ -102,6 +104,26 @@ export default function CartStore({ data }: CartStoreProps) {
         } else {
             setTotalPrice(0);
         }
+    };
+    const handleClickBuy = () => {
+        if (document.querySelectorAll("input[name='cb-select']:checked").length == 0) {
+            enqueueSnackbar('Vui lòng chọn sản phẩm để thanh toán', {
+                style: { height: '100%' },
+                autoHideDuration: 1000,
+                variant: 'warning',
+                anchorOrigin: { horizontal: 'right', vertical: 'top' },
+                hideIconVariant: false,
+            });
+            return;
+        }
+        enqueueSnackbar('Chức năng này đang được hoàn thiện', {
+            style: { height: '100%' },
+            autoHideDuration: 1000,
+            variant: 'warning',
+            anchorOrigin: { horizontal: 'right', vertical: 'top' },
+            hideIconVariant: false,
+        });
+        return;
     };
     return (
         <div className={cx('container')}>
@@ -254,7 +276,9 @@ export default function CartStore({ data }: CartStoreProps) {
                         </div>
                     </div>
                 </div>
-                <button className={cx('btn-buy')}>Mua Hàng 0</button>
+                <button onClick={handleClickBuy} className={cx('btn-buy')}>
+                    Mua Hàng 0
+                </button>
             </div>
         </div>
     );

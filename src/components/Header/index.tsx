@@ -18,8 +18,11 @@ import Search from '../Search';
 import SearchMobile from '../SearchMobile';
 import style from './Header.module.scss';
 import TippyCart from '../TippyCart';
+import { useSnackbar } from 'notistack';
+
 export default function Header() {
     const cx = classNames.bind(style);
+    const { enqueueSnackbar } = useSnackbar();
     const [isShowAuth, setIsShowAuth] = useState(false);
     const [isShowHistory, setIsShowHistory] = useState(false);
     const [isShowLocation, setIsShowLocation] = useState(false);
@@ -33,6 +36,7 @@ export default function Header() {
     const debounce = useDebounce(searchValue, 500);
     const location = useAppSelector((state) => state.location.value);
     const isMobile = useAppSelector((state) => state.agent.value);
+    const isLogin = useAppSelector((state) => state.user.currentUser?.jwt);
     const isShowTippyCart = useAppSelector((state) => state.cart.isShowTippyCart);
     const listCartItem = useAppSelector((state) => state.cart.listCart);
     useEffect(() => {
@@ -147,6 +151,19 @@ export default function Header() {
                             <Link
                                 onClick={() => {
                                     dispatch(setStatus(outIndexList));
+                                    if (!isLogin) {
+                                        enqueueSnackbar(
+                                            'Vui lòng đăng nhập để trải nghiệm tốt hơn',
+                                            {
+                                                autoHideDuration: 1500,
+                                                variant: 'warning',
+                                                anchorOrigin: {
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                },
+                                            },
+                                        );
+                                    }
                                 }}
                                 to="/cart"
                             >
