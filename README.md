@@ -14,7 +14,7 @@
 -   Cart
 -   Show and Filters products
 -   Location
--   Responsive
+-   Responsive (Mobile is developing according to style adaptive web design )
 
 UI
 

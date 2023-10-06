@@ -11,12 +11,16 @@ export function Home() {
     const isMobile = useAppSelector((state) => state.agent.value);
     useEffect(() => {
         const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
-        const mobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
+        const mobile = Boolean(
+            userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i),
+        );
         dispatch(setAgent(mobile));
     }, [dispatch]);
     return (
         <div className={cx('main', { space: isMobile })}>
-            <Product />
+            <div>
+                <Product />
+            </div>
             {isMobile && <BottomNavigator />}
         </div>
     );

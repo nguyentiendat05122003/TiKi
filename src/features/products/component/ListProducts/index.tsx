@@ -31,7 +31,7 @@ export default function ListProduct({ data }: ListProductProps) {
     ) : (
         <Grid container style={{ gap: '8px', backgroundColor: '#f5f5fa', paddingTop: '6px' }}>
             {data.map((product, idx) => (
-                <Grid item xs={6} lg="auto" key={idx} style={{ backgroundColor: '#fff' }}>
+                <Grid item lg="auto" key={idx} style={{ backgroundColor: '#fff' }}>
                     <div key={product.id}>
                         <ProductItem item={product} />
                     </div>
