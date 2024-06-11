@@ -1,24 +1,21 @@
 export interface ParamsProvince {
-    code: number;
-    params: {
-        depth: number;
-    };
+    province_id: string;
+    province_name: string;
+
 }
 export interface ProvinceType {
-    name: string;
-    code: number;
-    districts: DistrictType[];
+    province_id: string;
+    province_name: string;
 }
 
 export interface DistrictType {
-    name: string;
-    code: number;
-    wards: WardType[];
+    district_id: string;
+    district_name: string;
 }
 
 export interface WardType {
-    name: string;
-    code: number;
+    ward_id: string;
+    ward_name: string;
 }
 
 export interface LocationType {

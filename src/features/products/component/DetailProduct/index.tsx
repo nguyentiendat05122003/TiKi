@@ -32,6 +32,7 @@ export default function DetailProduct() {
         const fetch = async () => {
             const id = Number(match?.params.id);
             const res = await productApi.getProduct(id);
+            console.log('res', res);
             setProduct(res);
             setInsuranceProduct(res.originalPrice * 0.005);
         };
@@ -106,9 +107,10 @@ export default function DetailProduct() {
                                     <div className={cx('price-product')}>
                                         <div className={cx('current-price')}>
                                             {FormatPrice(product?.salePrice || 1)}
-                                            <sup>đ</sup>
                                         </div>
-                                        <div className={cx('discount')}>-23%</div>
+                                        <div className={cx('discount')}>
+                                            -{product?.promotionPercent}%
+                                        </div>
                                     </div>
                                 </div>
                             </div>

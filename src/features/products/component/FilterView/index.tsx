@@ -14,6 +14,8 @@ export default function FilterView({ filters, onChange }: FilterViewProps) {
     const visibleFilters = useMemo(() => {
         return FILTERS.filter((item) => item.isVisible(filters));
     }, [filters]);
+    console.log('filter', filters);
+    console.log('visibleFilters', visibleFilters);
     return (
         <div className={cx('container')}>
             <p className={cx('sticky')}></p>

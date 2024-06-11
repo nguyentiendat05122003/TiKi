@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { axiosClientCity } from '~/services';
 import { DistrictType, ParamsProvince, ProvinceType, WardType } from '~/types';
 
 const cityApi = {
-    getAllProvince(): Promise<ProvinceType[]> {
-        return axiosClientCity.get('/p');
+    getAllProvince(): Promise<any[]> {
+        return axiosClientCity.get('/province');
     },
-    getDistricts(params: ParamsProvince): Promise<ProvinceType> {
-        return axiosClientCity.get(`/p/${params.code}`, { params: params.params });
+    getDistricts(params: ParamsProvince): Promise<DistrictType[]> {
+        return axiosClientCity.get(`/province/district/${params.province_id}`);
     },
-    getWards(params: ParamsProvince): Promise<DistrictType> {
-        return axiosClientCity.get(`/d/${params.code}`, { params: params.params });
+    getWards(params: DistrictType): Promise<WardType[]> {
+        return axiosClientCity.get(`/province/ward/${params.district_id}`);
     },
     searchProvince(params: { q: string }): Promise<ProvinceType[]> {
         return axiosClientCity.get('/p/search/', { params });

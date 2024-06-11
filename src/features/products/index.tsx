@@ -92,6 +92,7 @@ export default function Product() {
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChangeFilters = (newFilter: any) => {
+        console.log(newFilter);
         navigate({
             pathname: location.pathname,
             search: queryString.stringify({ ...queryParams, ...newFilter }),
